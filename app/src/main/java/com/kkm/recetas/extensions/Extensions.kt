@@ -61,6 +61,6 @@ fun Meal.toRecipe(): Recipe {
         instructions = strInstructions,
         ingredients = listIngredients,
         measures = listMeasure,
-        sourceUrl = strSource
+        //sourceUrl = strSource
     )
 }

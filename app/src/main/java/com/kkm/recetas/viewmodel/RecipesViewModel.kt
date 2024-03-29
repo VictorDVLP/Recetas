@@ -17,9 +17,9 @@ class RecipesViewModel( private val repository: RecipesRepository): ViewModel() 
 
     private fun getRecipes() {
         viewModelScope.launch {
-            _state.value = UiState(isLoading = true)
-            _state.value = UiState(recipes = repository.getRecipe())
-            _state.value = UiState(isLoading = false)
+            _state.value = _state.value.copy(isLoading = true)
+            _state.value = _state.value.copy(recipes = repository.getRecipe())
+            _state.value = _state.value.copy(isLoading = false)
         }
     }
 
