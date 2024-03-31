@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,7 +23,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recetas.repository.RecipesRepository
@@ -34,7 +37,11 @@ fun RecipesScreen(repository: RecipesRepository) {
     val viewModel: RecipesViewModel = viewModel { RecipesViewModel(repository = repository) }
     val state by viewModel.state.collectAsState()
 
-    Scaffold { paddingValues ->
+    Scaffold(
+        contentColor = MaterialTheme.colorScheme.onBackground,
+        topBar = { TopBarDetails() },
+        modifier = Modifier.fillMaxSize()
+    ) { paddingValues ->
         LazyColumn(
             modifier = Modifier
                 .padding(paddingValues),
@@ -42,40 +49,48 @@ fun RecipesScreen(repository: RecipesRepository) {
         ) {
             if (state.recipes.isNotEmpty()) {
                 item {
-                    Box {
+                    Box{
                         Image(
                             painter = rememberAsyncImagePainter(model = state.recipes[0].imageThumb),
                             contentDescription = state.recipes[0].name,
                             modifier = Modifier
                                 .padding(horizontal = 8.dp, vertical = 2.dp)
                                 .aspectRatio(2 / 3f),
-                            contentScale = ContentScale.Fit
+                            contentScale = ContentScale.Crop
                         )
                     }
 
                     Text(
                         text = state.recipes[0].name,
                         modifier = Modifier.fillMaxWidth(),
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.displayMedium,
                         textAlign = TextAlign.Center
-                    )
-
-                    Text(
-                        text = state.recipes[0].area,
-                        modifier = Modifier.fillMaxWidth(),
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Start
-                    )
-
-                    Text(
-                        text = state.recipes[0].category,
-                        modifier = Modifier.fillMaxWidth(),
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Start
                     )
 
                     Row(
                         horizontalArrangement = Arrangement.Start
+                    ) {
+                        Text(
+                            text = state.recipes[0].area,
+                            fontSize = 20.sp,
+                            modifier = Modifier.padding(end = 8.dp),
+                            style = MaterialTheme.typography.titleMedium
+                        )
+
+                        Text(
+                            text = state.recipes[0].category,
+                            fontSize = 20.sp,
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 8.dp, vertical = 16.dp),
+                        horizontalArrangement = Arrangement.SpaceAround
                     ) {
                         ListIngredients(state.recipes[0].ingredients)
                         ListMeasures(state.recipes[0].measures)
@@ -91,55 +106,68 @@ fun RecipesScreen(repository: RecipesRepository) {
 
 @Composable
 fun ListIngredients(ingredients: List<String> ) {
-    Text(
-        text = "Ingredients:",
-        style = MaterialTheme.typography.titleMedium
-    )
-    Spacer(modifier = Modifier.height(8.dp))
-    LazyColumn(modifier = Modifier.height(100.dp)) {
-        items(ingredients) { ingredient ->
-            Text(
-                text = " · $ingredient",
-                modifier = Modifier
-                    .padding(horizontal = 6.dp, vertical = 2.dp),
-                style = MaterialTheme.typography.bodySmall
-            )
+    Column{
+        Text(
+            text = "Ingredients:",
+            fontSize = 22.sp,
+            style = MaterialTheme.typography.titleMedium
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        LazyColumn(modifier = Modifier.height(100.dp)) {
+            items(ingredients) { ingredient ->
+                Text(
+                    text = " · $ingredient",
+                    fontSize = 16.sp,
+                    modifier = Modifier
+                        .padding(horizontal = 6.dp, vertical = 2.dp),
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
     }
 }
 
 @Composable
 fun ListMeasures( measures: List<String> ) {
-    Text(
-        text = "Measures:",
-        style = MaterialTheme.typography.titleMedium
-    )
-    Spacer(modifier = Modifier.height(8.dp))
-    LazyColumn(modifier = Modifier.height(100.dp)) {
-        items(measures) { measure ->
-            Text(
-                text = " · $measure",
-                modifier = Modifier
-                    .padding(horizontal = 6.dp, vertical = 2.dp),
-                style = MaterialTheme.typography.bodySmall
-            )
+    Column {
+        Text(
+            text = "Measures:",
+            fontSize = 22.sp,
+            style = MaterialTheme.typography.titleMedium
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        LazyColumn(modifier = Modifier.height(100.dp)) {
+            items(measures) { measure ->
+                Text(
+                    text = " · $measure",
+                    fontSize = 16.sp,
+                    modifier = Modifier
+                        .padding(horizontal = 6.dp, vertical = 2.dp),
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
     }
 }
 
 @Composable
 fun Instructions( instructions: String ) {
-    Column {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp, vertical = 16.dp)
+    ) {
     Text(
         text = "Instructions",
         modifier = Modifier.fillMaxWidth(),
-        style = MaterialTheme.typography.titleLarge
+        style = MaterialTheme.typography.displaySmall
     )
     Spacer(modifier = Modifier.height(8.dp))
     Text(
         text = instructions,
         modifier = Modifier.fillMaxWidth(),
-        style = MaterialTheme.typography.bodyMedium
+        style = MaterialTheme.typography.bodyLarge
     )
     }
 }
