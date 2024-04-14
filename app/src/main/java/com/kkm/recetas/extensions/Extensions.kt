@@ -1,7 +1,38 @@
 package com.kkm.recetas.extensions
 
+import com.kkm.recetas.data.local.database.LocalRecipes
 import com.kkm.recetas.data.local.model.Recipe
 import com.kkm.recetas.data.remote.entities.Meal
+
+
+fun Recipe.toEntity(): LocalRecipes {
+
+    return LocalRecipes(
+        id = id.toInt(),
+        name = name,
+        area = area,
+        category = category,
+        ingredients = ingredients,
+        instructions = instructions,
+        imageThumb = imageThumb,
+        videoThumb = videoThumb,
+        measures = measures)
+}
+
+
+fun LocalRecipes.toRecipe2(): Recipe {
+    return Recipe(
+        id = id.toString(),
+        name = name,
+        area = area,
+        category = category,
+        ingredients = ingredients,
+        instructions = instructions,
+        imageThumb = imageThumb,
+        videoThumb = videoThumb,
+        measures = measures
+    )
+}
 
 fun Meal.toRecipe(): Recipe {
 

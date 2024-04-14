@@ -1,7 +1,11 @@
-package com.kkm.recetas.data.local.model
+package com.kkm.recetas.data.local.database
 
-data class Recipe(
-    val id: String,
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "recipes")
+data class LocalRecipes(
+    @PrimaryKey val id: Int,
     val name: String,
     val imageThumb: String,
     val videoThumb: String,
