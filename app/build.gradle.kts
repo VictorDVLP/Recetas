@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.resolve.sam.getSingleAbstractMethodOrNull
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
 }
 
 android {
@@ -67,7 +70,8 @@ dependencies {
 
     //Room
     implementation(libs.room.runtime)
-    implementation(libs.room.compiler)
+    implementation(libs.room.ktx)
+    kapt("androidx.room:room-compiler:2.6.1")
 
     //Navigation
     implementation(libs.androidx.navigation.compose)

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.map
 
 class RecipesLocalDataSource(private val recipesDao: RecipesDao) {
 
-    val localRecipes: Flow<List<Recipe>> = recipesDao.getRecipes().map { it.map { entity -> entity.toRecipe2() } }
+    val localRecipes: Flow<List<Recipe>> = recipesDao.getLocalRecipes().map { it.map { entity -> entity.toRecipe2() } }
 
     suspend fun insertRecipe(recipe: Recipe) {
         recipesDao.insertRecipe(recipe.toEntity())

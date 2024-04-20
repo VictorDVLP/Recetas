@@ -1,5 +1,6 @@
 package com.kkm.recetas.data.remote.entities
 
+
 data class Meal(
     val dateModified: Any,
     val idMeal: String,

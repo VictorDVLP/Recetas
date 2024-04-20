@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RecipesDao {
     @Query("SELECT * FROM recipes")
-    fun getRecipes(): Flow<List<LocalRecipes>>
+    fun getLocalRecipes(): Flow<List<LocalRecipes>>
 
     @Insert
     suspend fun insertRecipe(recipe: LocalRecipes)
