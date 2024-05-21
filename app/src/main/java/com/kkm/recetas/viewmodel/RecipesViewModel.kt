@@ -5,12 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.kkm.recetas.data.local.model.Recipe
 import com.kkm.recetas.repository.RecipesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class RecipesViewModel(private val repository: RecipesRepository) : ViewModel() {
 
     private val _state: MutableStateFlow<UiState> = MutableStateFlow(UiState())
-    val state get() = _state
+    val state get() = _state.asStateFlow()
 
 
     init {

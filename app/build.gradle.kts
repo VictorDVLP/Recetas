@@ -1,8 +1,8 @@
-import org.jetbrains.kotlin.resolve.sam.getSingleAbstractMethodOrNull
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kotlinXSerialization)
+    alias(libs.plugins.ksp)
     id("kotlin-kapt")
 }
 
@@ -69,12 +69,14 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
 
     //Room
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    kapt("androidx.room:room-compiler:2.6.1")
+     implementation(libs.androidx.room.ktx)
+     ksp(libs.androidx.room.compiler)
 
     //Navigation
     implementation(libs.androidx.navigation.compose)
+
+    //KotlinX
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
