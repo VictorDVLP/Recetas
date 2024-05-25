@@ -1,22 +1,25 @@
 package com.kkm.recetas.ui.screens
 
 import android.content.Intent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -26,9 +29,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
@@ -51,12 +54,11 @@ fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) 
             contentColor = MaterialTheme.colorScheme.onBackground,
             topBar = {
                 TopBarApp(
-                    title = it.name,
                     { onBack() },
                     {
                         Intent(Intent.ACTION_SEND).also { it.type = "text/plain" }
                             .putExtra(Intent.EXTRA_TEXT, viewModel.formattedRecipe(it))
-                            .let { intent -> startActivity( context, intent, null) }
+                            .let { intent -> startActivity(context, intent, null) }
                     },
                     { viewModel.deleteRecipe(it); onBack() })
             },
@@ -73,7 +75,7 @@ fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) 
                             contentDescription = it.name,
                             modifier = Modifier
                                 .padding(horizontal = 8.dp, vertical = 2.dp)
-                                .aspectRatio(2 / 3f),
+                                .aspectRatio(16 / 9f),
                             contentScale = ContentScale.Crop
                         )
                     }
@@ -81,7 +83,7 @@ fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) 
                     Text(
                         text = it.name,
                         modifier = Modifier.fillMaxWidth(),
-                        style = MaterialTheme.typography.displayMedium,
+                        style = MaterialTheme.typography.displaySmall,
                         textAlign = TextAlign.Center
                     )
 
@@ -108,7 +110,8 @@ fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) 
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 8.dp, vertical = 16.dp),
-                        horizontalArrangement = Arrangement.SpaceAround
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         ListsRecipe(it.ingredients, "Ingredients:")
                         ListsRecipe(it.measures, "Measures:")
@@ -144,7 +147,7 @@ fun Instructions(instructions: String) {
 }
 
 @Composable
-private fun ListsRecipe(list: List<String?>, title: String) {
+private fun ListsRecipe(list: List<String>, title: String) {
     Column {
         Text(
             text = title,
@@ -152,15 +155,26 @@ private fun ListsRecipe(list: List<String?>, title: String) {
             style = MaterialTheme.typography.titleMedium
         )
         Spacer(modifier = Modifier.height(8.dp))
-        LazyColumn(modifier = Modifier.height(100.dp)) {
-            items(list) { item ->
-                Text(
-                    text = " · $item",
-                    fontSize = 16.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 6.dp, vertical = 2.dp),
-                    style = MaterialTheme.typography.bodySmall
-                )
+        Surface(
+            shape = MaterialTheme.shapes.small,
+            border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
+            modifier = Modifier.height(100.dp).padding(start = 1.dp, end = 1.dp)
+        ) {
+            LazyColumn(
+                modifier = Modifier.widthIn(min = 200.dp)
+            ) {
+                items(list) { item ->
+                    Text(
+                        text = " · $item",
+                        fontSize = 16.sp,
+                        modifier = Modifier
+                            .height(38.dp)
+                            .padding(horizontal = 6.dp, vertical = 2.dp),
+                        style = MaterialTheme.typography.bodySmall,
+                        maxLines = 2,
+                        overflow = TextOverflow.Visible
+                    )
+                }
             }
         }
     }

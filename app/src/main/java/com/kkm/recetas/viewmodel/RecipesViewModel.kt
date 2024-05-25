@@ -1,5 +1,6 @@
 package com.kkm.recetas.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kkm.recetas.data.local.model.Recipe
@@ -15,13 +16,13 @@ class RecipesViewModel(private val repository: RecipesRepository) : ViewModel() 
 
 
     init {
-            getRecipes()
-        }
+        getRecipes()
+    }
 
     fun getRecipes() {
         viewModelScope.launch {
             _state.value = _state.value.copy(isLoading = true)
-            repository.getRecipe()
+            repository.insertRecipe()
             repository.recipes.collect {
                 _state.value = _state.value.copy(recipes = it)
             }
