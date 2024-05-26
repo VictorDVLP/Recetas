@@ -1,5 +1,5 @@
 
-package com.kkm.recetas.ui.screens.toolbar
+package com.kkm.recetas.ui.common.toolbar
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack

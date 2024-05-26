@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.kkm.recetas.ui.screens
+package com.kkm.recetas.ui.screens.recipes
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -35,8 +35,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.kkm.recetas.R
 import com.kkm.recetas.data.local.model.Recipe
 import com.kkm.recetas.repository.RecipesRepository
-import com.kkm.recetas.ui.screens.floating.FloatingButton
-import com.kkm.recetas.ui.screens.toolbar.TopBarApp
+import com.kkm.recetas.ui.common.floating.FloatingButton
 import com.kkm.recetas.viewmodel.RecipesViewModel
 
 @Composable
@@ -52,7 +51,12 @@ fun RecipesScreen(repository: RecipesRepository, onNavigateDetail: (String) -> U
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
             )
         },
-        floatingActionButton = { FloatingButton(Icons.Filled.Add) { viewModel.getRecipes() } }
+        floatingActionButton = {
+            FloatingButton(
+                description = "Add Recipe",
+                icon = Icons.Filled.Add
+            ) { viewModel.getRecipes() }
+        }
     ) { paddingValues ->
         LazyVerticalGrid(
             modifier = Modifier.padding(paddingValues),
@@ -86,6 +90,7 @@ fun RecipeItem(recipe: Recipe, modifier: Modifier = Modifier) {
                     contentScale = ContentScale.Crop
                 )
             }
+
             Text(
                 text = recipe.name,
                 modifier = modifier

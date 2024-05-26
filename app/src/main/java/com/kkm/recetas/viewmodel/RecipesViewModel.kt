@@ -43,14 +43,13 @@ Zona: ${recipe.area}
 Categoría: ${recipe.category}
 
 Ingredientes:
-${recipe.ingredients.joinToString("\n") { it ?: "" }}
+${recipe.ingredients.joinToString("\n") { it }}
 
 Medidas:
-${recipe.measures.joinToString("\n") { it ?: "" }}
+${recipe.measures.joinToString("\n") { it }}
 
 Instrucciones:
 ${recipe.instructions}
 """.trimIndent()
     }
-
 }

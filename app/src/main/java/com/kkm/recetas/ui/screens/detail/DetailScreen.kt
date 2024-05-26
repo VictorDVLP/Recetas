@@ -1,8 +1,8 @@
-
 package com.kkm.recetas.ui.screens.detail
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recetas.repository.RecipesRepository
-import com.kkm.recetas.ui.screens.toolbar.TopBarApp
+import com.kkm.recetas.ui.common.toolbar.TopBarApp
 import com.kkm.recetas.viewmodel.RecipesViewModel
 
 @Composable
@@ -154,7 +154,9 @@ private fun ListsRecipe(list: List<String>, title: String) {
                 .padding(start = 1.dp, end = 1.dp)
         ) {
             LazyColumn(
-                modifier = Modifier.widthIn(min = 200.dp)
+                modifier = Modifier
+                    .widthIn(min = 200.dp)
+                    .background(MaterialTheme.colorScheme.inversePrimary),
             ) {
                 items(list) { item ->
                     Text(
