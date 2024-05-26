@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.kkm.recetas.ui.screens
+package com.kkm.recetas.ui.screens.recipes
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -36,7 +36,6 @@ import com.kkm.recetas.R
 import com.kkm.recetas.data.local.model.Recipe
 import com.kkm.recetas.repository.RecipesRepository
 import com.kkm.recetas.ui.screens.floating.FloatingButton
-import com.kkm.recetas.ui.screens.toolbar.TopBarApp
 import com.kkm.recetas.viewmodel.RecipesViewModel
 
 @Composable

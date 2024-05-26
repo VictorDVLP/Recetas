@@ -1,6 +1,5 @@
 package com.kkm.recetas.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kkm.recetas.data.local.model.Recipe

@@ -6,8 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.kkm.recetas.repository.RecipesRepository
-import com.kkm.recetas.ui.screens.DetailScreen
-import com.kkm.recetas.ui.screens.RecipesScreen
+import com.kkm.recetas.ui.screens.detail.DetailScreen
+import com.kkm.recetas.ui.screens.recipes.RecipesScreen
 
 
 @Composable

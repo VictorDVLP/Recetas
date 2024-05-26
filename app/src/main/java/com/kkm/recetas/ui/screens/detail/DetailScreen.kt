@@ -1,6 +1,6 @@
-package com.kkm.recetas.ui.screens
 
-import android.content.Intent
+package com.kkm.recetas.ui.screens.detail
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,12 +26,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recetas.repository.RecipesRepository
@@ -45,7 +42,7 @@ fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) 
     val viewModel: RecipesViewModel = viewModel { RecipesViewModel(repository = repository) }
     val state by viewModel.state.collectAsState()
 
-    val context = LocalContext.current
+    val detailState = rememberDetailState()
 
     val recipe = state.recipes.find { it.id == id }
     recipe?.let {
@@ -55,11 +52,7 @@ fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) 
             topBar = {
                 TopBarApp(
                     { onBack() },
-                    {
-                        Intent(Intent.ACTION_SEND).also { it.type = "text/plain" }
-                            .putExtra(Intent.EXTRA_TEXT, viewModel.formattedRecipe(it))
-                            .let { intent -> startActivity(context, intent, null) }
-                    },
+                    { detailState.initIntent(recipe = it) { viewModel.formattedRecipe(it) } },
                     { viewModel.deleteRecipe(it); onBack() })
             },
             modifier = Modifier.fillMaxSize()
@@ -109,9 +102,7 @@ fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) 
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 8.dp, vertical = 16.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                        verticalAlignment = Alignment.CenterVertically
+                            .padding(horizontal = 8.dp, vertical = 16.dp)
                     ) {
                         ListsRecipe(it.ingredients, "Ingredients:")
                         ListsRecipe(it.measures, "Measures:")
@@ -158,7 +149,9 @@ private fun ListsRecipe(list: List<String>, title: String) {
         Surface(
             shape = MaterialTheme.shapes.small,
             border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
-            modifier = Modifier.height(100.dp).padding(start = 1.dp, end = 1.dp)
+            modifier = Modifier
+                .height(100.dp)
+                .padding(start = 1.dp, end = 1.dp)
         ) {
             LazyColumn(
                 modifier = Modifier.widthIn(min = 200.dp)

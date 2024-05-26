@@ -1,4 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
 
 package com.kkm.recetas.ui.screens.toolbar
 
@@ -14,8 +13,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBarApp( onBack: () -> Unit, onShare: () -> Unit, onDelete: () -> Unit) {
+fun TopBarApp(onBack: () -> Unit, onShare: () -> Unit, onDelete: () -> Unit) {
     TopAppBar(
         title = { },
         navigationIcon = {
