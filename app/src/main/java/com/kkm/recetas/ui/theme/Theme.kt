@@ -17,36 +17,75 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = PastelPurple,
+    onPrimary = Color.White,
+    primaryContainer = PastelPink,
+    onPrimaryContainer = PastelBlue,
+    secondary = MutedSapphire,
+    onSecondary = Color.White,
+    secondaryContainer = EarthyTaupe,
+    onSecondaryContainer = CalmingAqua,
+    tertiary = CalmingNavy,
+    onTertiary = Color.White,
+    tertiaryContainer = CalmingLavender,
+    onTertiaryContainer = CalmingGray,
+    error = MutedGarnet,
+    errorContainer = PastelYellow,
+    onError = Color.White,
+    onErrorContainer = SoftBrown,
+    background = EarthyBeige,
+    onBackground = EarthyBrown,
+    surface = EarthyBeige,
+    onSurface = EarthyBrown,
+    surfaceVariant = EarthyTaupe,
+    onSurfaceVariant = EarthyOlive,
+    outline = SoftOlive,
+    inverseOnSurface = EarthyBrown,
+    inverseSurface = EarthyBeige,
+    inversePrimary = PastelBlue
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = PastelCeleste,
-    secondary = PastelMelocoton,
-    tertiary = PastelVerdeMenta,
-    background = background,
-    surface = surface,
+    primary = EarthyOlive,
     onPrimary = Color.White,
+    primaryContainer = PastelGreen,
+    onPrimaryContainer = Color.White,
+    secondary = MutedEmerald,
     onSecondary = Color.White,
+    secondaryContainer = CalmingTeal,
+    onSecondaryContainer = Color.White,
+    tertiary = EarthyBrown,
     onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
+    tertiaryContainer = CalmingLavender,
+    onTertiaryContainer = CalmingGray,
+    error = MutedGarnet,
+    errorContainer = PastelYellow,
+    onError = Color.White,
+    onErrorContainer = SoftBrown,
+    background = Color.White,
+    onBackground = EarthyBrown,
+    surface = Color.White,
+    onSurface = Color.White,
+    surfaceVariant = EarthyTaupe,
+    onSurfaceVariant = Color.White,
+    outline = SoftOlive,
+    inverseOnSurface = SoftTaupe,
+    inverseSurface = Color.White,
+    inversePrimary = PastelGreen
 )
 
 @Composable
 fun RecipesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+   // dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+//            val context = LocalContext.current
+//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+//        }
 
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
