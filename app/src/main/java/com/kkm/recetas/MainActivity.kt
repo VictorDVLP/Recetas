@@ -36,7 +36,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     RecipesApplication(repository)
-                    Log.d("TAG", "onCreate: ${repository.recipes}")
                 }
             }
         }

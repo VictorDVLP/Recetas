@@ -61,7 +61,7 @@ fun Recipe.toEntity(): LocalRecipes {
 
 fun LocalRecipes.toRecipe2(): Recipe {
 
-    val listIngredients:List<String> = listOf(
+    val listIngredients: List<String> = listOf(
         ingredient1,
         ingredient2,
         ingredient3,
@@ -84,7 +84,7 @@ fun LocalRecipes.toRecipe2(): Recipe {
         ingredient20
     ).mapNotNull { it }
 
-    val listMeasure:List<String> = listOf(
+    val listMeasure: List<String> = listOf(
         measure1,
         measure2,
         measure3,
@@ -120,7 +120,7 @@ fun LocalRecipes.toRecipe2(): Recipe {
     )
 }
 
-fun Meal.toRecipe(): Recipe {
+fun Meal.toRecipe(): List<Recipe> {
 
     val listIngredients: List<String> = listOfNotNull(
         strIngredient1,
@@ -168,15 +168,17 @@ fun Meal.toRecipe(): Recipe {
         strMeasure20
     )
 
-    return Recipe(
-        id = idMeal,
-        name = strMeal,
-        category = strCategory,
-        area = strArea,
-        imageThumb = strMealThumb,
-        videoThumb = strYoutube,
-        instructions = strInstructions,
-        ingredients = listIngredients,
-        measures = listMeasure,
+    return listOf(
+        Recipe(
+            id = idMeal,
+            name = strMeal,
+            category = strCategory,
+            area = strArea,
+            imageThumb = strMealThumb,
+            videoThumb = strYoutube,
+            instructions = strInstructions,
+            ingredients = listIngredients,
+            measures = listMeasure,
+        )
     )
 }

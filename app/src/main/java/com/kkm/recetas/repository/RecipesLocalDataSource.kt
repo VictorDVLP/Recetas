@@ -11,8 +11,8 @@ class RecipesLocalDataSource(private val recipesDao: RecipesDao) {
 
     val localRecipes: Flow<List<Recipe>> = recipesDao.getLocalRecipes().map { it.map { entity -> entity.toRecipe2() } }
 
-    suspend fun insertRecipe(recipe: Recipe) {
-        recipesDao.insertRecipe(recipe.toEntity())
+    suspend fun insertRecipe(recipe: List<Recipe>) {
+        recipesDao.insertRecipe(recipe[0].toEntity())
     }
 
     suspend fun deleteRecipe(recipe: Recipe) {

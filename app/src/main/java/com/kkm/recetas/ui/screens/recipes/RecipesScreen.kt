@@ -55,7 +55,7 @@ fun RecipesScreen(repository: RecipesRepository, onNavigateDetail: (String) -> U
             FloatingButton(
                 description = "Add Recipe",
                 icon = Icons.Filled.Add
-            ) { viewModel.getRecipes() }
+            ) { viewModel.addRecipe() }
         }
     ) { paddingValues ->
         LazyVerticalGrid(

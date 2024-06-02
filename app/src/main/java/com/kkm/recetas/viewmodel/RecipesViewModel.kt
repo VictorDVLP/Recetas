@@ -5,7 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.kkm.recetas.data.local.model.Recipe
 import com.kkm.recetas.repository.RecipesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class RecipesViewModel(private val repository: RecipesRepository) : ViewModel() {
@@ -18,14 +21,17 @@ class RecipesViewModel(private val repository: RecipesRepository) : ViewModel() 
         getRecipes()
     }
 
-    fun getRecipes() {
+    private fun getRecipes() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
-            repository.insertRecipe()
             repository.recipes.collect {
-                _state.value = _state.value.copy(recipes = it)
+                _state.value = _state.value.copy(isLoading = false, recipes = it)
             }
-            _state.value = _state.value.copy(isLoading = false)
+        }
+    }
+
+    fun addRecipe() {
+        viewModelScope.launch {
+            repository.addRecipe()
         }
     }
 
