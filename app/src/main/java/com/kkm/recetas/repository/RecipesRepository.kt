@@ -11,19 +11,20 @@ class RecipesRepository(
 ) {
     val recipes: Flow<List<Recipe>> =
         recipesLocalDataSource.localRecipes.transform { localRecipes ->
-            val recipes: List<Recipe> = localRecipes.takeIf { it.isNotEmpty() }
-                ?: recipesRemoteDataSource.getRecipe().also {
-                        recipesLocalDataSource.insertRecipe(it)
-                    }
-            emit(recipes)
+            if (localRecipes.isEmpty()) {
+                recipesRemoteDataSource.getRecipe().also { remoteRecipes ->
+                    recipesLocalDataSource.insertRecipe(remoteRecipes)
+                }
+            }
+            emit(localRecipes)
         }
 
     suspend fun addRecipe() {
-            val request = recipesRemoteDataSource.getRecipe()
-            recipesLocalDataSource.insertRecipe(request)
+        val request = recipesRemoteDataSource.getRecipe()
+        recipesLocalDataSource.insertRecipe(request)
     }
 
-        suspend fun deleteRecipe(recipe: Recipe) {
-            recipesLocalDataSource.deleteRecipe(recipe)
-        }
+    suspend fun deleteRecipe(recipe: Recipe) {
+        recipesLocalDataSource.deleteRecipe(recipe)
     }
+}
