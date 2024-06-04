@@ -30,18 +30,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recetas.R
 import com.kkm.recetas.data.local.model.Recipe
-import com.kkm.recetas.repository.RecipesRepository
 import com.kkm.recetas.ui.common.floating.FloatingButton
 import com.kkm.recetas.viewmodel.RecipesViewModel
 
 @Composable
-fun RecipesScreen(repository: RecipesRepository, onNavigateDetail: (String) -> Unit) {
+fun RecipesScreen(viewModel: RecipesViewModel, onNavigateDetail: (String) -> Unit) {
 
-    val viewModel: RecipesViewModel = viewModel { RecipesViewModel(repository) }
     val state by viewModel.state.collectAsState()
 
     Scaffold(

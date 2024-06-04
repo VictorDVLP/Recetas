@@ -30,16 +30,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
-import com.kkm.recetas.repository.RecipesRepository
 import com.kkm.recetas.ui.common.toolbar.TopBarApp
 import com.kkm.recetas.viewmodel.RecipesViewModel
 
 @Composable
-fun DetailScreen(id: String, repository: RecipesRepository, onBack: () -> Unit) {
+fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {
 
-    val viewModel: RecipesViewModel = viewModel { RecipesViewModel(repository = repository) }
     val state by viewModel.state.collectAsState()
 
     val detailState = rememberDetailState()
