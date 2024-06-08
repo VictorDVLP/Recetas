@@ -58,13 +58,11 @@ fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {
                     { viewModel.deleteRecipe(it); onBack() })
             },
             floatingActionButton = {
-                Log.i("TAG", "DetailScreen: ${it.isFavorite}")
                 FloatingButton(
                     description = "favorite",
                     icon = if (recipe.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
                 ) {
                     viewModel.updateFavorite(recipe)
-                    Log.i("TAG", "DetailScreen: ${it.isFavorite}")
                 }
             },
             modifier = Modifier.fillMaxSize()
