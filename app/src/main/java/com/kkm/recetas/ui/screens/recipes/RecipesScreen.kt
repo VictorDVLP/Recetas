@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,7 +26,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -86,6 +90,16 @@ fun RecipeItem(recipe: Recipe, modifier: Modifier = Modifier) {
                         .aspectRatio(2 / 3f),
                     contentScale = ContentScale.Crop
                 )
+                if (recipe.isFavorite) {
+                    Image(
+                        imageVector = Icons.Filled.Favorite,
+                        contentDescription = "Favorite",
+                        modifier = Modifier
+                            .padding(top = 12.dp, end = 8.dp)
+                            .align(Alignment.TopEnd),
+                        colorFilter = ColorFilter.tint(Color.Red)
+                    )
+                }
             }
 
             Text(

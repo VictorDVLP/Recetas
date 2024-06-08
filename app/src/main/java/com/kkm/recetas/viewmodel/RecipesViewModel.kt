@@ -5,10 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.kkm.recetas.data.local.model.Recipe
 import com.kkm.recetas.repository.RecipesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class RecipesViewModel(private val repository: RecipesRepository) : ViewModel() {
@@ -35,10 +33,17 @@ class RecipesViewModel(private val repository: RecipesRepository) : ViewModel() 
         }
     }
 
-    fun deleteRecipe(recipe: Recipe) {
-        viewModelScope.launch {
-            repository.deleteRecipe(recipe)
+    fun updateFavorite(recipe: Recipe) {
+            viewModelScope.launch {
+                repository.updateFavorite(recipe)
         }
+    }
+
+    fun deleteRecipe(recipe: Recipe) {
+            viewModelScope.launch {
+                repository.deleteRecipe(recipe)
+            }
+
     }
 
     fun formattedRecipe(recipe: Recipe): String {

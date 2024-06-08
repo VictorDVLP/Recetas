@@ -1,5 +1,6 @@
 package com.kkm.recetas.ui.screens.detail
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,6 +17,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -31,6 +35,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.kkm.recetas.ui.common.floating.FloatingButton
 import com.kkm.recetas.ui.common.toolbar.TopBarApp
 import com.kkm.recetas.viewmodel.RecipesViewModel
 
@@ -51,6 +56,16 @@ fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {
                     { onBack() },
                     { detailState.initIntent(recipe = it) { viewModel.formattedRecipe(it) } },
                     { viewModel.deleteRecipe(it); onBack() })
+            },
+            floatingActionButton = {
+                Log.i("TAG", "DetailScreen: ${it.isFavorite}")
+                FloatingButton(
+                    description = "favorite",
+                    icon = if (recipe.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
+                ) {
+                    viewModel.updateFavorite(recipe)
+                    Log.i("TAG", "DetailScreen: ${it.isFavorite}")
+                }
             },
             modifier = Modifier.fillMaxSize()
         ) { paddingValues ->

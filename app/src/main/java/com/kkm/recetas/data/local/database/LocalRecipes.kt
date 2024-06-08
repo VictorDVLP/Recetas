@@ -52,4 +52,5 @@ data class LocalRecipes(
     val measure18: String?,
     val measure19: String?,
     val measure20: String?,
+    val isFavorite: Boolean
 )

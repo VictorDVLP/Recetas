@@ -2,6 +2,7 @@ package com.kkm.recetas.repository
 
 import com.kkm.recetas.data.local.model.Recipe
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.flow.transform
 
@@ -22,6 +23,10 @@ class RecipesRepository(
     suspend fun addRecipe() {
         val request = recipesRemoteDataSource.getRecipe()
         recipesLocalDataSource.insertRecipe(request)
+    }
+
+   suspend fun updateFavorite(recipe: Recipe) {
+       recipesLocalDataSource.insertRecipe(listOf(recipe.copy(isFavorite = !recipe.isFavorite)))
     }
 
     suspend fun deleteRecipe(recipe: Recipe) {
