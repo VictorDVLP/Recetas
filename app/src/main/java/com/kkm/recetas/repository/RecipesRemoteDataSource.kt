@@ -7,6 +7,6 @@ import com.kkm.recetas.extensions.toRecipe
 class RecipesRemoteDataSource {
     suspend fun getRecipe(): List<Recipe> {
         val result = RecetasApi.retrofitService.getRecipes()
-        return result.meals.last().toRecipe()
+        return result.meals.first().toRecipe()
     }
 }

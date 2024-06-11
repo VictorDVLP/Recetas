@@ -15,46 +15,46 @@ fun Recipe.toEntity(): LocalRecipes {
         instructions = instructions,
         imageThumb = imageThumb,
         videoThumb = videoThumb,
-        ingredient1 = ingredients[0],
-        ingredient2 = ingredients[1],
-        ingredient3 = ingredients[2],
-        ingredient4 = ingredients[3],
-        ingredient5 = ingredients[4],
-        ingredient6 = ingredients[5],
-        ingredient7 = ingredients[6],
-        ingredient8 = ingredients[7],
-        ingredient9 = ingredients[8],
-        ingredient10 = ingredients[9],
-        ingredient11 = ingredients[10],
-        ingredient12 = ingredients[11],
-        ingredient13 = ingredients[12],
-        ingredient14 = ingredients[13],
-        ingredient15 = ingredients[14],
-        ingredient16 = ingredients[15],
-        ingredient17 = ingredients[16],
-        ingredient18 = ingredients[17],
-        ingredient19 = ingredients[18],
-        ingredient20 = ingredients[19],
-        measure1 = measures[0],
-        measure2 = measures[1],
-        measure3 = measures[2],
-        measure4 = measures[3],
-        measure5 = measures[4],
-        measure6 = measures[5],
-        measure7 = measures[6],
-        measure8 = measures[7],
-        measure9 = measures[8],
-        measure10 = measures[9],
-        measure11 = measures[10],
-        measure12 = measures[11],
-        measure13 = measures[12],
-        measure14 = measures[13],
-        measure15 = measures[14],
-        measure16 = measures[15],
-        measure17 = measures[16],
-        measure18 = measures[17],
-        measure19 = measures[18],
-        measure20 = measures[19],
+        ingredient1 = ingredients.getOrNull(0),
+        ingredient2 = ingredients.getOrNull(1),
+        ingredient3 = ingredients.getOrNull(2),
+        ingredient4 = ingredients.getOrNull(3),
+        ingredient5 = ingredients.getOrNull(4),
+        ingredient6 = ingredients.getOrNull(5),
+        ingredient7 = ingredients.getOrNull(6),
+        ingredient8 = ingredients.getOrNull(7),
+        ingredient9 = ingredients.getOrNull(8),
+        ingredient10 = ingredients.getOrNull(9),
+        ingredient11 = ingredients.getOrNull(10),
+        ingredient12 = ingredients.getOrNull(11),
+        ingredient13 = ingredients.getOrNull(12),
+        ingredient14 = ingredients.getOrNull(13),
+        ingredient15 = ingredients.getOrNull(14),
+        ingredient16 = ingredients.getOrNull(15),
+        ingredient17 = ingredients.getOrNull(16),
+        ingredient18 = ingredients.getOrNull(17),
+        ingredient19 = ingredients.getOrNull(18),
+        ingredient20 = ingredients.getOrNull(19),
+        measure1 = measures.getOrNull(0),
+        measure2 = measures.getOrNull(1),
+        measure3 = measures.getOrNull(2),
+        measure4 = measures.getOrNull(3),
+        measure5 = measures.getOrNull(4),
+        measure6 = measures.getOrNull(5),
+        measure7 = measures.getOrNull(6),
+        measure8 = measures.getOrNull(7),
+        measure9 = measures.getOrNull(8),
+        measure10 = measures.getOrNull(9),
+        measure11 = measures.getOrNull(10),
+        measure12 = measures.getOrNull(11),
+        measure13 = measures.getOrNull(12),
+        measure14 = measures.getOrNull(13),
+        measure15 = measures.getOrNull(14),
+        measure16 = measures.getOrNull(15),
+        measure17 = measures.getOrNull(16),
+        measure18 = measures.getOrNull(17),
+        measure19 = measures.getOrNull(18),
+        measure20 = measures.getOrNull(19),
         isFavorite = isFavorite
     )
 }
@@ -84,6 +84,7 @@ fun LocalRecipes.toRecipe2(): Recipe {
         ingredient19,
         ingredient20
     )
+
 
     val listMeasure: List<String> = listOfNotNull(
         measure1,
@@ -124,7 +125,7 @@ fun LocalRecipes.toRecipe2(): Recipe {
 
 fun Meal.toRecipe(): List<Recipe> {
 
-    val listIngredients: List<String> = listOfNotNull(
+    val preListIngredients: List<String?> = listOf(
         strIngredient1,
         strIngredient2,
         strIngredient3,
@@ -147,7 +148,11 @@ fun Meal.toRecipe(): List<Recipe> {
         strIngredient20
     )
 
-    val listMeasure: List<String> = listOfNotNull(
+
+    val listIngredients: List<String> =
+        preListIngredients.filterNot { it.isNullOrEmpty() }.filterNotNull()
+
+    val preListMeasure: List<String?> = listOf(
         strMeasure1,
         strMeasure2,
         strMeasure3,
@@ -169,6 +174,9 @@ fun Meal.toRecipe(): List<Recipe> {
         strMeasure19,
         strMeasure20
     )
+
+
+    val listMeasure: List<String> = preListMeasure.filterNot { it.isNullOrEmpty() }.filterNotNull()
 
     return listOf(
         Recipe(

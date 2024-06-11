@@ -23,8 +23,8 @@ class RecipesRepository(
         recipesLocalDataSource.insertRecipe(request)
     }
 
-   suspend fun updateFavorite(recipe: Recipe) {
-       recipesLocalDataSource.insertRecipe(listOf(recipe.copy(isFavorite = !recipe.isFavorite)))
+    suspend fun updateFavorite(recipe: Recipe) {
+        recipesLocalDataSource.insertRecipe(listOf(recipe.copy(isFavorite = !recipe.isFavorite)))
     }
 
     suspend fun deleteRecipe(recipe: Recipe) {

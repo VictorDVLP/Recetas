@@ -1,6 +1,5 @@
 package com.kkm.recetas.ui.screens.detail
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -35,9 +34,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.kkm.recetas.ui.common.floating.FloatingButton
-import com.kkm.recetas.ui.common.toolbar.TopBarApp
+import com.kkm.recetas.ResultCall
+import com.kkm.recetas.data.local.model.Recipe
+import com.kkm.recetas.ui.common.FloatingButton
+import com.kkm.recetas.ui.common.TopBarApp
 import com.kkm.recetas.viewmodel.RecipesViewModel
+import okhttp3.internal.filterList
 
 @Composable
 fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {
@@ -46,7 +48,7 @@ fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {
 
     val detailState = rememberDetailState()
 
-    val recipe = state.recipes.find { it.id == id }
+    val recipe = (state as? ResultCall.Success<List<Recipe>>)?.data?.find { it.id == id }
     recipe?.let {
 
         Scaffold(
@@ -170,7 +172,7 @@ private fun ListsRecipe(list: List<String>, title: String) {
             ) {
                 items(list) { item ->
                     Text(
-                        text = " · $item",
+                        text = if (item.isEmpty()) "" else "· $item",
                         fontSize = 16.sp,
                         modifier = Modifier
                             .height(38.dp)

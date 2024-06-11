@@ -1,4 +1,4 @@
-package com.kkm.recetas.ui.common.floating
+package com.kkm.recetas.ui.common
 
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon

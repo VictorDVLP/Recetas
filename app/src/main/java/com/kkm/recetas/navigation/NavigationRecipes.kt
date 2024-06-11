@@ -27,11 +27,11 @@ fun NavigationRecipes() {
 
     NavHost(navController = navController, startDestination = Home) {
         composable<Home> {
-            RecipesScreen(viewModel = viewModel { RecipesViewModel(repository = repository) }) {
+            RecipesScreen(viewModel = viewModel { RecipesViewModel(repository = repository) }, {
                 navController.navigate(
                     RecipeDetail(it)
                 )
-            }
+            }, {navController.navigate(Home) })
         }
 
         composable<RecipeDetail> { backStackEntry ->
