@@ -1,15 +1,15 @@
 [versions]
 agp = "8.3.2"
 coilCompose = "2.6.0"
-kotlin = "1.9.22"
+kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.8.0"
+lifecycleRuntimeKtx = "2.8.2"
 activityCompose = "1.9.0"
-navigationCompose = "2.8.0-beta01"
-composeBom = "2024.05.00"
+navigationCompose = "2.8.0-beta03"
+composeBom = "2024.06.00"
 kotlinXSerialization = "1.6.3"
 
 [libraries]
@@ -41,5 +41,6 @@ androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version = "2.6
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinXSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version = "1.9.23-1.0.20" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.21" }
 
