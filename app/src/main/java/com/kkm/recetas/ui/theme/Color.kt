@@ -1,6 +1,7 @@
 package com.kkm.recetas.ui.theme
 
 import androidx.compose.ui.graphics.Color
+
 // Pastel Colors
 val PastelPink = Color(0xFFF4D8E4)
 val PastelBlue = Color(0xFFD0E7FF)

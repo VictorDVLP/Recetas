@@ -19,5 +19,5 @@ class DetailState(private val context: Context) {
 
 @Composable
 fun rememberDetailState(context: Context = LocalContext.current): DetailState {
-   return remember { DetailState(context) }
+    return remember { DetailState(context) }
 }
