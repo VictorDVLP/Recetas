@@ -9,10 +9,10 @@ import androidx.core.content.ContextCompat
 import com.kkm.recetas.domain.Recipe
 
 class DetailState(private val context: Context) {
-    fun initIntent(recipe: Recipe, onFormatted: (Recipe) -> String) {
+    fun initIntent(recipe: Recipe) {
 
         Intent(Intent.ACTION_SEND).also { it.type = "text/plain" }
-            .putExtra(Intent.EXTRA_TEXT, onFormatted(recipe))
+            .putExtra(Intent.EXTRA_TEXT, formattedRecipe(recipe))
             .let { intent -> ContextCompat.startActivity(context, intent, null) }
     }
 }
@@ -20,4 +20,23 @@ class DetailState(private val context: Context) {
 @Composable
 fun rememberDetailState(context: Context = LocalContext.current): DetailState {
     return remember { DetailState(context) }
+}
+
+
+private fun formattedRecipe(recipe: Recipe): String {
+    return """
+Nombre: ${recipe.name}
+Imagen: ${recipe.imageThumb}
+Zona: ${recipe.area}
+Categoría: ${recipe.category}
+
+Ingredientes:
+${recipe.ingredients.joinToString("\n") { it }}
+
+Medidas:
+${recipe.measures.joinToString("\n") { it }}
+
+Instrucciones:
+${recipe.instructions}
+""".trimIndent()
 }

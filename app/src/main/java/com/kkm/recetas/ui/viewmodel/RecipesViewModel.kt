@@ -42,22 +42,4 @@ class RecipesViewModel(
         }
 
     }
-
-    fun formattedRecipe(recipe: Recipe): String {
-        return """
-Nombre: ${recipe.name}
-Imagen: ${recipe.imageThumb}
-Zona: ${recipe.area}
-Categoría: ${recipe.category}
-
-Ingredientes:
-${recipe.ingredients.joinToString("\n") { it }}
-
-Medidas:
-${recipe.measures.joinToString("\n") { it }}
-
-Instrucciones:
-${recipe.instructions}
-""".trimIndent()
-    }
 }
