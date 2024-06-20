@@ -55,7 +55,7 @@ fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {
             topBar = {
                 TopBarApp(
                     { onBack() },
-                    { detailState.initIntent(recipe = it) { viewModel.formattedRecipe(it) } },
+                    { detailState.initIntent(recipe = it) },
                     { viewModel.deleteRecipe(it); onBack() })
             },
             floatingActionButton = {

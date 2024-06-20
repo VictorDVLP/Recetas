@@ -14,6 +14,10 @@ import com.kkm.recetas.repository.RecipesRepository
 import com.kkm.recetas.ui.screens.detail.DetailScreen
 import com.kkm.recetas.ui.screens.recipes.RecipesScreen
 import com.kkm.recetas.ui.viewmodel.RecipesViewModel
+import com.kkm.recetas.usecases.AddRecipeUseCase
+import com.kkm.recetas.usecases.DeleteRecipeUseCase
+import com.kkm.recetas.usecases.GetAllRecipesUseCase
+import com.kkm.recetas.usecases.UpdateFavoriteUseCase
 
 
 @Composable
@@ -24,20 +28,36 @@ fun NavigationRecipes() {
         recipesRemoteDataSource = RecipesRemoteDataSource(),
         recipesLocalDataSource = RecipesLocalDataSource(application.db.recipesDao())
     )
+    val getAllRecipesUseCase = GetAllRecipesUseCase(repository = repository)
+    val addRecipesUseCase = AddRecipeUseCase(repository = repository)
+    val updateFavoriteUseCase = UpdateFavoriteUseCase(repository = repository)
+    val deleteRecipeUseCase = DeleteRecipeUseCase(repository = repository)
 
     NavHost(navController = navController, startDestination = Home) {
         composable<Home> {
-            RecipesScreen(viewModel = viewModel { RecipesViewModel(repository = repository) }, {
+            RecipesScreen(viewModel = viewModel {
+                RecipesViewModel(
+                    getAllRecipesUseCase,
+                    addRecipesUseCase,
+                    updateFavoriteUseCase,
+                    deleteRecipeUseCase
+                )
+            }, {
                 navController.navigate(
                     RecipeDetail(it)
                 )
-            }, {navController.navigate(Home) })
+            }, { navController.navigate(Home) })
         }
 
         composable<RecipeDetail> { backStackEntry ->
             val detail = backStackEntry.toRoute<RecipeDetail>()
             DetailScreen(id = detail.id, viewModel = viewModel {
-                RecipesViewModel(repository = repository)
+                RecipesViewModel(
+                    getAllRecipesUseCase,
+                    addRecipesUseCase,
+                    updateFavoriteUseCase,
+                    deleteRecipeUseCase
+                )
             })
             { navController.popBackStack() }
         }
