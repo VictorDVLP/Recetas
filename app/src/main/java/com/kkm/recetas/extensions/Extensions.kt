@@ -1,7 +1,7 @@
 package com.kkm.recetas.extensions
 
 import com.kkm.recetas.data.local.database.LocalRecipes
-import com.kkm.recetas.data.local.model.Recipe
+import com.kkm.recetas.domain.Recipe
 import com.kkm.recetas.data.remote.entities.Meal
 
 

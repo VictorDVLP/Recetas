@@ -1,35 +1,44 @@
-package com.kkm.recetas.viewmodel
+package com.kkm.recetas.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kkm.recetas.ResultCall
-import com.kkm.recetas.data.local.model.Recipe
+import com.kkm.recetas.domain.Recipe
 import com.kkm.recetas.repository.RecipesRepository
 import com.kkm.recetas.stateAsResultIn
+import com.kkm.recetas.usecases.AddRecipeUseCase
+import com.kkm.recetas.usecases.DeleteRecipeUseCase
+import com.kkm.recetas.usecases.GetAllRecipesUseCase
+import com.kkm.recetas.usecases.UpdateFavoriteUseCase
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class RecipesViewModel(private val repository: RecipesRepository) : ViewModel() {
+class RecipesViewModel(
+    getAllRecipesUseCase: GetAllRecipesUseCase,
+    private val addRecipeUseCase: AddRecipeUseCase,
+    private val updateFavoriteUseCase: UpdateFavoriteUseCase,
+    private val deleteRecipeUseCase: DeleteRecipeUseCase
+) : ViewModel() {
 
-    val state: StateFlow<ResultCall<List<Recipe>>> = repository.recipes
+    val state: StateFlow<ResultCall<List<Recipe>>> = getAllRecipesUseCase()
         .stateAsResultIn(viewModelScope)
 
 
     fun addRecipe() {
         viewModelScope.launch {
-            repository.addRecipe()
+            addRecipeUseCase()
         }
     }
 
     fun updateFavorite(recipe: Recipe) {
         viewModelScope.launch {
-            repository.updateFavorite(recipe)
+            updateFavoriteUseCase(recipe)
         }
     }
 
     fun deleteRecipe(recipe: Recipe) {
         viewModelScope.launch {
-            repository.deleteRecipe(recipe)
+            deleteRecipeUseCase(recipe)
         }
 
     }

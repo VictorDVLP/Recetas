@@ -19,7 +19,7 @@ import com.kkm.recetas.ui.common.FloatingButton
 import com.kkm.recetas.ui.screens.recipes.resultComposables.ErrorScreen
 import com.kkm.recetas.ui.screens.recipes.resultComposables.LoadingIndicator
 import com.kkm.recetas.ui.screens.recipes.resultComposables.SuccessScreen
-import com.kkm.recetas.viewmodel.RecipesViewModel
+import com.kkm.recetas.ui.viewmodel.RecipesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

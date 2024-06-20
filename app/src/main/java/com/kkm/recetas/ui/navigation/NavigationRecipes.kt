@@ -1,4 +1,4 @@
-package com.kkm.recetas.navigation
+package com.kkm.recetas.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -13,7 +13,7 @@ import com.kkm.recetas.repository.RecipesRemoteDataSource
 import com.kkm.recetas.repository.RecipesRepository
 import com.kkm.recetas.ui.screens.detail.DetailScreen
 import com.kkm.recetas.ui.screens.recipes.RecipesScreen
-import com.kkm.recetas.viewmodel.RecipesViewModel
+import com.kkm.recetas.ui.viewmodel.RecipesViewModel
 
 
 @Composable

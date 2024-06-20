@@ -1,4 +1,4 @@
-package com.kkm.recetas.data.local.model
+package com.kkm.recetas.domain
 
 data class Recipe(
     val id: String,

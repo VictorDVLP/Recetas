@@ -12,8 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kkm.recetas.ResultCall
-import com.kkm.recetas.data.local.model.Recipe
-import com.kkm.recetas.viewmodel.RecipesViewModel
+import com.kkm.recetas.domain.Recipe
 
 @Composable
 fun ErrorScreen(

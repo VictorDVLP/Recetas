@@ -27,7 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recetas.ResultCall
-import com.kkm.recetas.data.local.model.Recipe
+import com.kkm.recetas.domain.Recipe
 
 @Composable
 fun SuccessScreen(

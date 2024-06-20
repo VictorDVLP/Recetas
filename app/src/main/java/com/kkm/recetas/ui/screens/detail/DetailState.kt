@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import com.kkm.recetas.data.local.model.Recipe
+import com.kkm.recetas.domain.Recipe
 
 class DetailState(private val context: Context) {
     fun initIntent(recipe: Recipe, onFormatted: (Recipe) -> String) {

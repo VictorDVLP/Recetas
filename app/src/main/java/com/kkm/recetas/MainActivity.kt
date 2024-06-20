@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.kkm.recetas.navigation.NavigationRecipes
+import com.kkm.recetas.ui.navigation.NavigationRecipes
 import com.kkm.recetas.ui.theme.RecipesTheme
 
 class MainActivity : ComponentActivity() {

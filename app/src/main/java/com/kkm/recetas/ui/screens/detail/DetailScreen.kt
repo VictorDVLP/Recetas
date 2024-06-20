@@ -35,11 +35,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recetas.ResultCall
-import com.kkm.recetas.data.local.model.Recipe
+import com.kkm.recetas.domain.Recipe
 import com.kkm.recetas.ui.common.FloatingButton
 import com.kkm.recetas.ui.common.TopBarApp
-import com.kkm.recetas.viewmodel.RecipesViewModel
-import okhttp3.internal.filterList
+import com.kkm.recetas.ui.viewmodel.RecipesViewModel
 
 @Composable
 fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {

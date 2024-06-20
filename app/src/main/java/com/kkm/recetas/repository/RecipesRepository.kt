@@ -1,6 +1,6 @@
 package com.kkm.recetas.repository
 
-import com.kkm.recetas.data.local.model.Recipe
+import com.kkm.recetas.domain.Recipe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
 

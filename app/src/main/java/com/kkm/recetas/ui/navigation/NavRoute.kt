@@ -1,4 +1,4 @@
-package com.kkm.recetas.navigation
+package com.kkm.recetas.ui.navigation
 
 import kotlinx.serialization.Serializable
 
