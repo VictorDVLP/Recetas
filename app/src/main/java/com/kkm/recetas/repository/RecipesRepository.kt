@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
 
 class RecipesRepository(
-    private val recipesRemoteDataSource: RecipesRemoteDataSource,
-    private val recipesLocalDataSource: RecipesLocalDataSource
+    private val recipesRemoteDataSource: RecipesRemoteDataSourceImpl,
+    private val recipesLocalDataSource: RecipesLocalDataSourceImpl
 ) {
     val recipes: Flow<List<Recipe>> =
         recipesLocalDataSource.localRecipes.transform { localRecipes ->
