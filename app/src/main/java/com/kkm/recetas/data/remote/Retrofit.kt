@@ -11,7 +11,7 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
     .build()
 
-object RecetasApi {
+object RecipesApi {
     val retrofitService: RecipesService by lazy {
         retrofit.create(RecipesService::class.java)
     }

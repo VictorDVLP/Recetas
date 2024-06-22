@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.kkm.recetas.RecipesApplication
+import com.kkm.recetas.data.remote.RecipesApi
 import com.kkm.recetas.repository.RecipesLocalDataSource
 import com.kkm.recetas.repository.RecipesRemoteDataSource
 import com.kkm.recetas.repository.RecipesRepository
@@ -24,8 +25,9 @@ import com.kkm.recetas.usecases.UpdateFavoriteUseCase
 fun NavigationRecipes() {
     val navController = rememberNavController()
     val application = LocalContext.current.applicationContext as RecipesApplication
+    val apiRecipe = RecipesApi
     val repository = RecipesRepository(
-        recipesRemoteDataSource = RecipesRemoteDataSource(),
+        recipesRemoteDataSource = RecipesRemoteDataSource(apiRecipe),
         recipesLocalDataSource = RecipesLocalDataSource(application.db.recipesDao())
     )
     val getAllRecipesUseCase = GetAllRecipesUseCase(repository = repository)
