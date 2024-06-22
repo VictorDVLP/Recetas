@@ -15,10 +15,10 @@ import com.kkm.recipes.framework.remote.RecipesApi
 import com.kkm.recipes.ui.screens.detail.DetailScreen
 import com.kkm.recipes.ui.screens.recipes.RecipesScreen
 import com.kkm.recipes.ui.viewmodel.RecipesViewModel
-import com.kkm.recipes.usecases.AddRecipeUseCase
-import com.kkm.recipes.usecases.DeleteRecipeUseCase
-import com.kkm.recipes.usecases.GetAllRecipesUseCase
-import com.kkm.recipes.usecases.UpdateFavoriteUseCase
+import com.kqm.architectureclean.usecases.AddRecipeUseCase
+import com.kqm.architectureclean.usecases.DeleteRecipeUseCase
+import com.kqm.architectureclean.usecases.GetAllRecipesUseCase
+import com.kqm.architectureclean.usecases.UpdateFavoriteUseCase
 
 
 @Composable
@@ -30,10 +30,14 @@ fun NavigationRecipes() {
         recipesRemoteDataSource = RecipesRemoteDataSource(apiRecipe),
         recipesLocalDataSource = RecipesLocalDataSource(application.db.recipesDao())
     )
-    val getAllRecipesUseCase = GetAllRecipesUseCase(repository = repository)
-    val addRecipesUseCase = AddRecipeUseCase(repository = repository)
-    val updateFavoriteUseCase = UpdateFavoriteUseCase(repository = repository)
-    val deleteRecipeUseCase = DeleteRecipeUseCase(repository = repository)
+    val getAllRecipesUseCase =
+        com.kqm.architectureclean.usecases.GetAllRecipesUseCase(repository = repository)
+    val addRecipesUseCase =
+        com.kqm.architectureclean.usecases.AddRecipeUseCase(repository = repository)
+    val updateFavoriteUseCase =
+        com.kqm.architectureclean.usecases.UpdateFavoriteUseCase(repository = repository)
+    val deleteRecipeUseCase =
+        com.kqm.architectureclean.usecases.DeleteRecipeUseCase(repository = repository)
 
     NavHost(navController = navController, startDestination = Home) {
         composable<Home> {

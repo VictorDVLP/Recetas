@@ -1,4 +1,4 @@
-package com.kkm.recipes.usecases
+package com.kqm.architectureclean.usecases
 
 import com.kqm.architectureclean.data.RecipesRepository
 

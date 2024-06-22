@@ -5,10 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.kkm.recipes.ResultCall
 import com.kqm.architectureclean.domain.Recipe
 import com.kkm.recipes.stateAsResultIn
-import com.kkm.recipes.usecases.AddRecipeUseCase
-import com.kkm.recipes.usecases.DeleteRecipeUseCase
-import com.kkm.recipes.usecases.GetAllRecipesUseCase
-import com.kkm.recipes.usecases.UpdateFavoriteUseCase
+import com.kqm.architectureclean.usecases.AddRecipeUseCase
+import com.kqm.architectureclean.usecases.DeleteRecipeUseCase
+import com.kqm.architectureclean.usecases.GetAllRecipesUseCase
+import com.kqm.architectureclean.usecases.UpdateFavoriteUseCase
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
