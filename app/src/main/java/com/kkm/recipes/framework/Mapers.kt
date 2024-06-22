@@ -1,8 +1,8 @@
 package com.kkm.recipes.framework
 
-import com.kqm.architectureclean.domain.Recipe
 import com.kkm.recipes.framework.local.database.LocalRecipes
 import com.kkm.recipes.framework.remote.entities.Meal
+import com.kqm.architectureclean.domain.Recipe
 
 
 fun Recipe.toEntity(): LocalRecipes {
