@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
-import com.kkm.recetas.R
+import com.kkm.architectureclean.recipes.R
 import com.kkm.recipes.ResultCall
 import com.kkm.recipes.ui.common.FloatingButton
 import com.kkm.recipes.ui.screens.recipes.resultComposables.ErrorScreen

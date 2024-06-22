@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recipes.ResultCall
-import com.kkm.recipes.domain.Recipe
+import com.kqm.architectureclean.domain.Recipe
 import com.kkm.recipes.ui.common.FloatingButton
 import com.kkm.recipes.ui.common.TopBarApp
 import com.kkm.recipes.ui.viewmodel.RecipesViewModel

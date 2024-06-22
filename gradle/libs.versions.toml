@@ -10,7 +10,7 @@ lifecycleRuntimeKtx = "2.8.2"
 activityCompose = "1.9.0"
 navigationCompose = "2.8.0-beta03"
 composeBom = "2024.06.00"
-kotlinXSerialization = "1.6.3"
+kotlinXSerialization = "1.7.0"
 jetbrainsKotlinJvm = "2.0.0"
 
 [libraries]

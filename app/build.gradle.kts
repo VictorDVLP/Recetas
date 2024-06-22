@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kkm.recetas"
+    namespace = "com.kkm.architectureclean.recipes"
     compileSdk = 34
 
     defaultConfig {
@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

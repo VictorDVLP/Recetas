@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kkm.recipes.ResultCall
-import com.kkm.recipes.domain.Recipe
+import com.kqm.architectureclean.domain.Recipe
 
 @Composable
 fun ErrorScreen(

@@ -1,7 +1,7 @@
 package com.kkm.recipes.framework
 
 import com.kkm.recipes.data.RecipesLocalDataSourceImpl
-import com.kkm.recipes.domain.Recipe
+import com.kqm.architectureclean.domain.Recipe
 import com.kkm.recipes.framework.local.database.RecipesDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

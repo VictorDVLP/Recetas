@@ -3,7 +3,7 @@ package com.kkm.recipes.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kkm.recipes.ResultCall
-import com.kkm.recipes.domain.Recipe
+import com.kqm.architectureclean.domain.Recipe
 import com.kkm.recipes.stateAsResultIn
 import com.kkm.recipes.usecases.AddRecipeUseCase
 import com.kkm.recipes.usecases.DeleteRecipeUseCase

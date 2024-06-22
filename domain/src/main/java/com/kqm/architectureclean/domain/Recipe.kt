@@ -1,4 +1,4 @@
-package com.kkm.recipes.domain
+package com.kqm.architectureclean.domain
 
 data class Recipe(
     val id: String,

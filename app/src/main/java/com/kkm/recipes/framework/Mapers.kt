@@ -1,6 +1,6 @@
 package com.kkm.recipes.framework
 
-import com.kkm.recipes.domain.Recipe
+import com.kqm.architectureclean.domain.Recipe
 import com.kkm.recipes.framework.local.database.LocalRecipes
 import com.kkm.recipes.framework.remote.entities.Meal
 
