@@ -1,4 +1,4 @@
-package com.kkm.recipes.data
+package com.kqm.architectureclean.data
 
 import com.kqm.architectureclean.domain.Recipe
 

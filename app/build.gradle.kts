@@ -51,6 +51,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -68,7 +69,7 @@ dependencies {
 
     //Room
      implementation(libs.androidx.room.ktx)
-     ksp(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
     //Navigation
     implementation(libs.androidx.navigation.compose)

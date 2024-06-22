@@ -1,6 +1,6 @@
 package com.kkm.recipes.framework
 
-import com.kkm.recipes.data.RecipesRemoteDataSourceImpl
+import com.kqm.architectureclean.data.RecipesRemoteDataSourceImpl
 import com.kqm.architectureclean.domain.Recipe
 import com.kkm.recipes.framework.remote.RecipesApi
 
