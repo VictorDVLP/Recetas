@@ -1,12 +1,8 @@
-package com.kkm.recetas.repository
+package com.kkm.recetas.framework
 
-import com.kkm.recetas.data.remote.RecipesApi
+import com.kkm.recetas.data.RecipesRemoteDataSourceImpl
 import com.kkm.recetas.domain.Recipe
-import com.kkm.recetas.extensions.toRecipe
-
-interface RecipesRemoteDataSourceImpl {
-    suspend fun getRecipe(): List<Recipe>
-}
+import com.kkm.recetas.framework.remote.RecipesApi
 
 class RecipesRemoteDataSource(private val recipesApi: RecipesApi) : RecipesRemoteDataSourceImpl {
     override suspend fun getRecipe(): List<Recipe> {

@@ -1,4 +1,4 @@
-package com.kkm.recetas.repository
+package com.kkm.recetas.data
 
 import com.kkm.recetas.domain.Recipe
 import kotlinx.coroutines.flow.Flow

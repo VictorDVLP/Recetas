@@ -1,4 +1,4 @@
-package com.kkm.recetas.data.local.database
+package com.kkm.recetas.framework.local.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

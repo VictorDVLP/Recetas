@@ -2,7 +2,7 @@
 package com.kkm.recetas.ui.common
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,7 +22,7 @@ fun TopBarApp(onBack: () -> Unit, onShare: () -> Unit, onDelete: () -> Unit) {
             IconButton(
                 onClick = { onBack() }
             ) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
         },
         actions = {

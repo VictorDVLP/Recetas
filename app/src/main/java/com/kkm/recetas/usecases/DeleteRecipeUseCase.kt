@@ -1,7 +1,7 @@
 package com.kkm.recetas.usecases
 
+import com.kkm.recetas.data.RecipesRepository
 import com.kkm.recetas.domain.Recipe
-import com.kkm.recetas.repository.RecipesRepository
 
 class DeleteRecipeUseCase(private val repository: RecipesRepository) {
 

@@ -1,4 +1,4 @@
-package com.kkm.recetas.data.remote.entities
+package com.kkm.recetas.framework.remote.entities
 
 
 data class Meal(

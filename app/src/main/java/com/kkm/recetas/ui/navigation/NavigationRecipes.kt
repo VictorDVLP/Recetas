@@ -8,10 +8,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.kkm.recetas.RecipesApplication
-import com.kkm.recetas.data.remote.RecipesApi
-import com.kkm.recetas.repository.RecipesLocalDataSource
-import com.kkm.recetas.repository.RecipesRemoteDataSource
-import com.kkm.recetas.repository.RecipesRepository
+import com.kkm.recetas.data.RecipesRepository
+import com.kkm.recetas.framework.RecipesLocalDataSource
+import com.kkm.recetas.framework.RecipesRemoteDataSource
+import com.kkm.recetas.framework.remote.RecipesApi
 import com.kkm.recetas.ui.screens.detail.DetailScreen
 import com.kkm.recetas.ui.screens.recipes.RecipesScreen
 import com.kkm.recetas.ui.viewmodel.RecipesViewModel

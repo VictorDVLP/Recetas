@@ -1,6 +1,6 @@
-package com.kkm.recetas.data.remote
+package com.kkm.recetas.framework.remote
 
-import com.kkm.recetas.data.remote.entities.Result
+import com.kkm.recetas.framework.remote.entities.Result
 import retrofit2.http.GET
 
 interface RecipesService {

@@ -2,7 +2,7 @@ package com.kkm.recetas
 
 import android.app.Application
 import androidx.room.Room
-import com.kkm.recetas.data.local.database.RoomRecipesDatabase
+import com.kkm.recetas.framework.local.database.RoomRecipesDatabase
 
 
 class RecipesApplication: Application() {

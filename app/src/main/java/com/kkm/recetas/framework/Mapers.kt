@@ -1,8 +1,8 @@
-package com.kkm.recetas.extensions
+package com.kkm.recetas.framework
 
-import com.kkm.recetas.data.local.database.LocalRecipes
 import com.kkm.recetas.domain.Recipe
-import com.kkm.recetas.data.remote.entities.Meal
+import com.kkm.recetas.framework.local.database.LocalRecipes
+import com.kkm.recetas.framework.remote.entities.Meal
 
 
 fun Recipe.toEntity(): LocalRecipes {

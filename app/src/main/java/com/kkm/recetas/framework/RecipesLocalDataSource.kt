@@ -1,19 +1,11 @@
-package com.kkm.recetas.repository
+package com.kkm.recetas.framework
 
-import com.kkm.recetas.data.local.database.RecipesDao
+import com.kkm.recetas.data.RecipesLocalDataSourceImpl
 import com.kkm.recetas.domain.Recipe
-import com.kkm.recetas.extensions.toEntity
-import com.kkm.recetas.extensions.toRecipe2
+import com.kkm.recetas.framework.local.database.RecipesDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-interface RecipesLocalDataSourceImpl {
-    val localRecipes: Flow<List<Recipe>>
-
-    suspend fun insertRecipe(recipe: List<Recipe>)
-
-    suspend fun deleteRecipe(recipe: Recipe)
-}
 
 class RecipesLocalDataSource(private val recipesDao: RecipesDao) : RecipesLocalDataSourceImpl {
 
