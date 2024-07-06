@@ -55,7 +55,7 @@ fun Recipe.toEntity(): LocalRecipes {
         measure18 = measures.getOrNull(17),
         measure19 = measures.getOrNull(18),
         measure20 = measures.getOrNull(19),
-        isFavorite = isFavorite
+        isFavorite = favorite
     )
 }
 
@@ -119,7 +119,7 @@ fun LocalRecipes.toRecipe2(): Recipe {
         imageThumb = imageThumb,
         videoThumb = videoThumb,
         measures = listMeasure,
-        isFavorite = isFavorite
+        favorite = isFavorite
     )
 }
 
@@ -189,7 +189,7 @@ fun Meal.toRecipe(): List<Recipe> {
             instructions = strInstructions,
             ingredients = listIngredients,
             measures = listMeasure,
-            isFavorite = false
+            favorite = false
         )
     )
 }

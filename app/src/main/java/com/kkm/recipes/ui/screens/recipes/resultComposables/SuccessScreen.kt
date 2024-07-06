@@ -66,7 +66,7 @@ private fun RecipeItem(recipe: Recipe, modifier: Modifier = Modifier) {
                         .aspectRatio(2 / 3f),
                     contentScale = ContentScale.Crop
                 )
-                if (recipe.isFavorite) {
+                if (recipe.favorite) {
                     Image(
                         imageVector = Icons.Filled.Favorite,
                         contentDescription = "Favorite",

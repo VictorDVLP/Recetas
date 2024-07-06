@@ -10,5 +10,5 @@ data class Recipe(
     val instructions: String,
     val ingredients: List<String>,
     val measures: List<String>,
-    var isFavorite: Boolean
+    var favorite: Boolean
 )

@@ -62,7 +62,7 @@ fun DetailScreen(id: String, viewModel: RecipesViewModel = hiltViewModel(), onBa
             floatingActionButton = {
                 FloatingButton(
                     description = "favorite",
-                    icon = if (recipe.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
+                    icon = if (recipe.favorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
                 ) {
                     viewModel.updateFavorite(recipe)
                 }
