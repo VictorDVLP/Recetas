@@ -9,10 +9,13 @@ import com.kqm.architectureclean.usecases.AddRecipeUseCase
 import com.kqm.architectureclean.usecases.DeleteRecipeUseCase
 import com.kqm.architectureclean.usecases.GetAllRecipesUseCase
 import com.kqm.architectureclean.usecases.UpdateFavoriteUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RecipesViewModel(
+@HiltViewModel
+class RecipesViewModel @Inject constructor(
     getAllRecipesUseCase: GetAllRecipesUseCase,
     private val addRecipeUseCase: AddRecipeUseCase,
     private val updateFavoriteUseCase: UpdateFavoriteUseCase,

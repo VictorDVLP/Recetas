@@ -33,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.kkm.recipes.ResultCall
 import com.kkm.recipes.ui.common.FloatingButton
@@ -41,7 +42,7 @@ import com.kkm.recipes.ui.viewmodel.RecipesViewModel
 import com.kqm.architectureclean.domain.Recipe
 
 @Composable
-fun DetailScreen(id: String, viewModel: RecipesViewModel, onBack: () -> Unit) {
+fun DetailScreen(id: String, viewModel: RecipesViewModel = hiltViewModel(), onBack: () -> Unit) {
 
     val state by viewModel.state.collectAsState()
 

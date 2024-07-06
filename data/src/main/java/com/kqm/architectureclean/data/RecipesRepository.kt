@@ -3,8 +3,9 @@ package com.kqm.architectureclean.data
 import com.kqm.architectureclean.domain.Recipe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
+import javax.inject.Inject
 
-class RecipesRepository(
+class RecipesRepository @Inject constructor (
     private val recipesRemoteDataSource: RecipesRemoteDataSourceImpl,
     private val recipesLocalDataSource: RecipesLocalDataSourceImpl
 ) {

@@ -9,7 +9,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.kkm.recipes.ui.navigation.NavigationRecipes
 import com.kkm.recipes.ui.theme.RecipesTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

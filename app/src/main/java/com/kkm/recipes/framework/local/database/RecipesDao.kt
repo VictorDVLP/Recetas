@@ -9,8 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import com.kkm.recipes.framework.local.database.LocalRecipes as LocalRecipe
 
 @Dao
-
-interface RecipesDao {
+internal interface RecipesDao {
     @Query("SELECT * FROM recipes")
     fun getLocalRecipes(): Flow<List<LocalRecipe>>
 

@@ -5,9 +5,10 @@ import com.kqm.architectureclean.data.RecipesLocalDataSourceImpl
 import com.kqm.architectureclean.domain.Recipe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 
-class RecipesLocalDataSource(private val recipesDao: RecipesDao) : RecipesLocalDataSourceImpl {
+internal class RecipesLocalDataSource @Inject constructor(private val recipesDao: RecipesDao) : RecipesLocalDataSourceImpl {
 
     override val localRecipes: Flow<List<Recipe>> = recipesDao.getLocalRecipes().map { it.map { entity -> entity.toRecipe2() } }
 
