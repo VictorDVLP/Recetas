@@ -1,20 +1,21 @@
 [versions]
-agp = "8.5.0"
+agp = "8.5.1"
 coilCompose = "2.6.0"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.2"
+lifecycleRuntimeKtx = "2.8.3"
 activityCompose = "1.9.0"
-navigationCompose = "2.8.0-beta04"
+navigationCompose = "2.8.0-beta05"
 composeBom = "2024.06.00"
 kotlinXSerialization = "1.7.0"
 jetbrainsKotlinJvm = "2.0.0"
 coroutinesCore = "1.7.3"
 hiltVersion = "2.51.1"
 hiltNavigationCompose = "1.2.0"
+mockitoKotlin = "5.3.1"
 
 
 
@@ -48,6 +49,8 @@ androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navig
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hiltVersion" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
+
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
 
 
 
