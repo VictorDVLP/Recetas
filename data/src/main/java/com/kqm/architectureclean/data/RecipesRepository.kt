@@ -5,12 +5,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
 import javax.inject.Inject
 
-class RecipesRepository @Inject constructor (
+class RecipesRepository @Inject constructor(
     private val recipesRemoteDataSource: RecipesRemoteDataSourceImpl,
     private val recipesLocalDataSource: RecipesLocalDataSourceImpl
 ) {
-    val recipes: Flow<List<Recipe>> =
-        recipesLocalDataSource.localRecipes.transform { localRecipes ->
+    val recipes: Flow<List<Recipe>>
+        get() = recipesLocalDataSource.localRecipes.transform { localRecipes ->
             if (localRecipes.isEmpty()) {
                 recipesRemoteDataSource.getRecipe().also { remoteRecipes ->
                     recipesLocalDataSource.insertRecipe(remoteRecipes)
