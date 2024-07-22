@@ -14,13 +14,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.architectureclean.architectureclean.recipes.R
 import com.architectureclean.recipes.ResultCall
 import com.architectureclean.recipes.ui.common.FloatingButton
 import com.architectureclean.recipes.ui.screens.recipes.resultComposables.ErrorScreen
 import com.architectureclean.recipes.ui.screens.recipes.resultComposables.LoadingIndicator
 import com.architectureclean.recipes.ui.screens.recipes.resultComposables.SuccessScreen
 import com.architectureclean.recipes.ui.viewmodel.RecipesViewModel
+import com.kkm.architectureclean.recipes.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
