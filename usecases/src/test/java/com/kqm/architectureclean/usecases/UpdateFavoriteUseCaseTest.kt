@@ -1,7 +1,7 @@
 package com.kqm.architectureclean.usecases
 
 import com.kqm.architectureclean.data.RecipesRepository
-import com.kqm.architectureclean.usecases.helpers.generateRecipes
+import com.kqm.architectureclean.test.unit.helpers.generateRecipes
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.mockito.kotlin.mock

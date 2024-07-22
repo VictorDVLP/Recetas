@@ -1,7 +1,7 @@
 package com.kqm.architectureclean.usecases
 
 import com.kqm.architectureclean.domain.Recipe
-import com.kqm.architectureclean.usecases.helpers.generateRecipes
+import com.kqm.architectureclean.test.unit.helpers.generateRecipes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import org.junit.Assert.assertEquals

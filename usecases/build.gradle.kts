@@ -12,6 +12,7 @@ java {
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
+    testImplementation(project(":test:unit"))
 
     implementation(libs.kotlinx.coroutines.core)
 

@@ -26,4 +26,6 @@ include(":app")
 include(":data")
 include(":domain")
 include(":usecases")
+include(":test:unit")
+
 

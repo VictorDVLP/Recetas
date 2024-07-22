@@ -11,9 +11,13 @@ java {
 
 dependencies {
     implementation(project(":domain"))
+    testImplementation(project(":test:unit"))
 
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.hilt.core)
 
+    implementation(libs.hilt.core)
     ksp(libs.hilt.compiler)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.kotlin)
 }
