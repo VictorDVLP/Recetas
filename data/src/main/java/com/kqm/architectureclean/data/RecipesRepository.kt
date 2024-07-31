@@ -2,7 +2,7 @@ package com.kqm.architectureclean.data
 
 import com.kqm.architectureclean.domain.Recipe
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.transform
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class RecipesRepository @Inject constructor(
@@ -10,13 +10,12 @@ class RecipesRepository @Inject constructor(
     private val recipesLocalDataSource: RecipesLocalDataSourceImpl
 ) {
     val recipes: Flow<List<Recipe>>
-        get() = recipesLocalDataSource.localRecipes.transform { localRecipes ->
+        get() = recipesLocalDataSource.localRecipes.onEach { localRecipes ->
             if (localRecipes.isEmpty()) {
                 recipesRemoteDataSource.getRecipe().also { remoteRecipes ->
                     recipesLocalDataSource.insertRecipe(remoteRecipes)
                 }
             }
-            emit(localRecipes)
         }
 
     suspend fun addRecipe() {
