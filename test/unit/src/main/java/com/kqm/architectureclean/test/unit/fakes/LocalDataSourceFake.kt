@@ -3,21 +3,24 @@ package com.kqm.architectureclean.test.unit.fakes
 import com.kqm.architectureclean.data.RecipesLocalDataSourceImpl
 import com.kqm.architectureclean.domain.Recipe
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.MutableStateFlow
 
-class LocalDataSourceFake(localData: List<Recipe>): RecipesLocalDataSourceImpl {
+class LocalDataSourceFake(localData: List<Recipe>) : RecipesLocalDataSourceImpl {
 
-    private var inMemoryTest: List<Recipe> = localData
+    private var inMemoryTest = MutableStateFlow(localData)
 
-    override val localRecipes: Flow<List<Recipe>> = flowOf(inMemoryTest)
+    override val localRecipes: Flow<List<Recipe>> = inMemoryTest
 
     override suspend fun insertRecipe(recipe: List<Recipe>) {
-        val result = inMemoryTest + recipe
-        inMemoryTest = result
+        inMemoryTest.value = inMemoryTest.value.toMutableList().apply {
+            recipe.forEach { newRecipe ->
+                removeAll { it.id == newRecipe.id }
+                add(newRecipe)
+            }
+        }
     }
 
     override suspend fun deleteRecipe(recipe: Recipe) {
-        val result = inMemoryTest - recipe
-        inMemoryTest = result
+        inMemoryTest.value -= recipe
     }
 }
