@@ -6,9 +6,9 @@ coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.3"
-activityCompose = "1.9.0"
-navigationCompose = "2.8.0-beta05"
+lifecycleRuntimeKtx = "2.8.4"
+activityCompose = "1.9.1"
+navigationCompose = "2.8.0-beta06"
 composeBom = "2024.06.00"
 kotlinXSerialization = "1.7.0"
 jetbrainsKotlinJvm = "2.0.0"
@@ -17,6 +17,7 @@ hiltVersion = "2.51.1"
 hiltNavigationCompose = "1.2.0"
 mockitoKotlin = "5.3.1"
 turbine = "1.0.0"
+test = "1.6.1"
 
 
 
@@ -55,6 +56,9 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
 
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+
+androidx-test-core = { group = "androidx.test", name = "core-ktx", version.ref = "test" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "test" }
 
 
 
