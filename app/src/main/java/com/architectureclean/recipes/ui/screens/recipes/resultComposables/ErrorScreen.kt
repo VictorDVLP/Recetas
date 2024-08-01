@@ -10,9 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.architectureclean.recipes.ResultCall
 import com.kqm.architectureclean.domain.Recipe
+
+const val BUTTON_RETRY_TEST_TAG = "button_retry"
 
 @Composable
 fun ErrorScreen(
@@ -26,7 +29,7 @@ fun ErrorScreen(
     ) {
         Text(text = "${(state as ResultCall.Error).exception.message}")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { onBack() }) {
+        Button(onClick = { onBack() }, modifier = Modifier.testTag(BUTTON_RETRY_TEST_TAG)) {
             Text("Retry")
         }
     }

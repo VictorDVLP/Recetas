@@ -1,4 +1,3 @@
-
 package com.architectureclean.recipes.ui.screens.recipes
 
 import androidx.compose.material.icons.Icons
@@ -21,12 +20,27 @@ import com.architectureclean.recipes.ui.screens.recipes.resultComposables.Loadin
 import com.architectureclean.recipes.ui.screens.recipes.resultComposables.SuccessScreen
 import com.architectureclean.recipes.ui.viewmodel.RecipesViewModel
 import com.kkm.architectureclean.recipes.R
+import com.kqm.architectureclean.domain.Recipe
+
+@Composable
+fun RecipesScreen(
+    viewModel: RecipesViewModel = hiltViewModel(),
+    onNavigateDetail: (String) -> Unit,
+    onBackNavigate: () -> Unit
+) {
+    val state by viewModel.state.collectAsState()
+
+    RecipesScreen(state = state, addRecipe = { viewModel.addRecipe() }, onNavigateDetail, onBackNavigate)
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RecipesScreen(viewModel: RecipesViewModel = hiltViewModel(), onNavigateDetail: (String) -> Unit, onBackNavigate: () -> Unit) {
-
-    val state by viewModel.state.collectAsState()
+fun RecipesScreen(
+    state: ResultCall<List<Recipe>>,
+    addRecipe: () -> Unit,
+    onNavigateDetail: (String) -> Unit,
+    onBackNavigate: () -> Unit
+) {
 
     Scaffold(
         topBar = {
@@ -39,16 +53,18 @@ fun RecipesScreen(viewModel: RecipesViewModel = hiltViewModel(), onNavigateDetai
             FloatingButton(
                 description = "Add Recipe",
                 icon = Icons.Filled.Add
-            ) { viewModel.addRecipe() }
+            ) { addRecipe() }
         }
     ) { paddingValues ->
         when (state) {
             is ResultCall.Success -> {
                 SuccessScreen(paddingValues, state, onNavigateDetail)
             }
+
             is ResultCall.Error -> {
                 ErrorScreen(state) { onBackNavigate() }
             }
+
             is ResultCall.Loading -> {
                 LoadingIndicator()
             }

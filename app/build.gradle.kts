@@ -57,6 +57,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":usecases"))
     testImplementation(project(":test:unit"))
+    androidTestImplementation(project(":test:unit"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

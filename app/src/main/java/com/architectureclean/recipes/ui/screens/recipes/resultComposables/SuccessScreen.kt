@@ -23,11 +23,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.architectureclean.recipes.ResultCall
 import com.kqm.architectureclean.domain.Recipe
+
+private const val SUCCESS_SCREEN_TEST_TAG = "Success_screen_test_tag"
 
 @Composable
 fun SuccessScreen(
@@ -36,7 +39,7 @@ fun SuccessScreen(
     onNavigateDetail: (String) -> Unit
 ) {
     LazyVerticalGrid(
-        modifier = Modifier.padding(paddingValues),
+        modifier = Modifier.padding(paddingValues).testTag(SUCCESS_SCREEN_TEST_TAG),
         columns = GridCells.Adaptive(180.dp)
     ) {
         items((state as ResultCall.Success<List<Recipe>>).data) { recipe ->
