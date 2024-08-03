@@ -43,13 +43,32 @@ import com.kqm.architectureclean.domain.Recipe
 
 @Composable
 fun DetailScreen(id: String, viewModel: RecipesViewModel = hiltViewModel(), onBack: () -> Unit) {
-
     val state by viewModel.state.collectAsState()
-
     val detailState = rememberDetailState()
 
+
     val recipe = (state as? ResultCall.Success<List<Recipe>>)?.data?.find { it.id == id }
-    recipe?.let {
+
+    if (recipe != null) {
+        DetailScreen(
+            recipe = recipe,
+            detailState = detailState,
+            onDeleteClick = viewModel::deleteRecipe,
+            onFavoriteClick = viewModel::updateFavorite,
+            onBack = onBack
+        )
+    }
+}
+
+@Composable
+fun DetailScreen(
+    recipe: Recipe,
+    detailState: DetailStateImpl,
+    onDeleteClick: (Recipe) -> Unit,
+    onFavoriteClick: (Recipe) -> Unit,
+    onBack: () -> Unit
+) {
+    recipe.let {
 
         Scaffold(
             contentColor = MaterialTheme.colorScheme.onBackground,
@@ -57,14 +76,14 @@ fun DetailScreen(id: String, viewModel: RecipesViewModel = hiltViewModel(), onBa
                 TopBarApp(
                     { onBack() },
                     { detailState.initIntent(recipe = it) },
-                    { viewModel.deleteRecipe(it); onBack() })
+                    { onDeleteClick(it); onBack() })
             },
             floatingActionButton = {
                 FloatingButton(
                     description = "favorite",
                     icon = if (recipe.favorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
                 ) {
-                    viewModel.updateFavorite(recipe)
+                    onFavoriteClick(recipe)
                 }
             },
             modifier = Modifier.fillMaxSize()

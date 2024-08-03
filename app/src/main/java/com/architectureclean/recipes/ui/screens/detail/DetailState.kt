@@ -8,8 +8,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import com.kqm.architectureclean.domain.Recipe
 
-class DetailState(private val context: Context) {
-    fun initIntent(recipe: Recipe) {
+interface DetailStateImpl {
+    fun initIntent(recipe: Recipe)
+}
+
+class DetailState(private val context: Context): DetailStateImpl {
+    override fun initIntent(recipe: Recipe) {
 
         Intent(Intent.ACTION_SEND).also { it.type = "text/plain" }
             .putExtra(Intent.EXTRA_TEXT, formattedRecipe(recipe))
