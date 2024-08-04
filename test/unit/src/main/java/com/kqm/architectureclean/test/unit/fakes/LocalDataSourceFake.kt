@@ -5,9 +5,9 @@ import com.kqm.architectureclean.domain.Recipe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class LocalDataSourceFake(localData: List<Recipe>) : RecipesLocalDataSourceImpl {
+class LocalDataSourceFake : RecipesLocalDataSourceImpl {
 
-    private var inMemoryTest = MutableStateFlow(localData)
+    var inMemoryTest = MutableStateFlow<List<Recipe>>(emptyList())
 
     override val localRecipes: Flow<List<Recipe>> = inMemoryTest
 

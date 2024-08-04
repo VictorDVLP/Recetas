@@ -10,7 +10,7 @@ fun buildRepositoryFake(
 ): RecipesRepository {
 
     val localDataSource: RecipesLocalDataSourceImpl =
-        LocalDataSourceFake(localData)
+        LocalDataSourceFake().apply { inMemoryTest.value = localData }
     val remoteDataSource: RecipesRemoteDataSourceImpl =
         RemoteDataSourceFake()
 
