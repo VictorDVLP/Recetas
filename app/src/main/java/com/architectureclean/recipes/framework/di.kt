@@ -21,16 +21,6 @@ internal object FrameworkModule {
 
     @Provides
     @Singleton
-    fun provideRoomDatabase(application: Application): RoomRecipesDatabase {
-        return Room.databaseBuilder(
-            application,
-            RoomRecipesDatabase::class.java,
-            "recipes-db"
-        ).build()
-    }
-
-    @Provides
-    @Singleton
     fun provideDao(database: RoomRecipesDatabase): RecipesDao {
         return database.recipesDao()
     }
@@ -42,6 +32,21 @@ internal object FrameworkModule {
     @Provides
     @Singleton
     fun provideServerService(api: RecipesApi): RecipesService = api.retrofitService
+}
+
+
+@Module
+@InstallIn(SingletonComponent::class)
+internal object FrameworkExtraModule {
+    @Provides
+    @Singleton
+    fun provideRoomDatabase(application: Application): RoomRecipesDatabase {
+        return Room.databaseBuilder(
+            application,
+            RoomRecipesDatabase::class.java,
+            "recipes-db"
+        ).build()
+    }
 }
 
 
