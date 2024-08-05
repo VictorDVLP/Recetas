@@ -1,7 +1,9 @@
-package com.architectureclean.recipes.framework
+package com.architectureclean.recipes.framework.di
 
 import android.app.Application
 import androidx.room.Room
+import com.architectureclean.recipes.framework.RecipesLocalDataSource
+import com.architectureclean.recipes.framework.RecipesRemoteDataSource
 import com.architectureclean.recipes.framework.local.database.RecipesDao
 import com.architectureclean.recipes.framework.local.database.RoomRecipesDatabase
 import com.architectureclean.recipes.framework.remote.RecipesApi
@@ -13,6 +15,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -27,7 +30,7 @@ internal object FrameworkModule {
 
     @Provides
     @Singleton
-    fun provideServerApi(): RecipesApi = RecipesApi
+    fun provideServerApi(@ApiUrl baseUrl: String): RecipesApi = RecipesApi(baseUrl)
 
     @Provides
     @Singleton
@@ -47,6 +50,11 @@ internal object FrameworkExtraModule {
             "recipes-db"
         ).build()
     }
+
+    @Provides
+    @Singleton
+    @ApiUrl
+    fun provideBaseUrl(): String = "https://www.themealdb.com/api/json/v1/1/"
 }
 
 
