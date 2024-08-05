@@ -8,7 +8,7 @@ fun generateRecipes(count: Int): List<Recipe> {
 
 private fun generateRecipe(id: Int): Recipe {
     return Recipe(
-        id = "recipe_$id",
+        id = "$id",
         name = "Recipe $id",
         imageThumb = "image_$id.jpg",
         videoThumb = "video_$id.mp4",
