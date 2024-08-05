@@ -2,13 +2,9 @@ package com.architectureclean.recipes.di
 
 import android.app.Application
 import androidx.room.Room
-import com.architectureclean.recipes.framework.DataSourceModule
-import com.architectureclean.recipes.framework.FrameworkExtraModule
+import com.architectureclean.recipes.framework.di.ApiUrl
+import com.architectureclean.recipes.framework.di.FrameworkExtraModule
 import com.architectureclean.recipes.framework.local.database.RoomRecipesDatabase
-import com.kqm.architectureclean.data.RecipesLocalDataSourceImpl
-import com.kqm.architectureclean.data.RecipesRemoteDataSourceImpl
-import com.kqm.architectureclean.test.unit.fakes.LocalDataSourceFake
-import com.kqm.architectureclean.test.unit.fakes.RemoteDataSourceFake
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
@@ -19,7 +15,7 @@ import javax.inject.Singleton
 
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [DataSourceModule::class, FrameworkExtraModule::class]
+    replaces = [FrameworkExtraModule::class]
 )
 
 @Module
@@ -36,17 +32,6 @@ object TestAppDataModule {
 
     @Provides
     @Singleton
-    fun provideLocalDataSourceFake() = LocalDataSourceFake()
-
-    @Provides
-    @Singleton
-    fun provideRemoteDataSourceFake() = RemoteDataSourceFake()
-
-    @Provides
-    @Singleton
-    fun provideLocalDataSource(fake: LocalDataSourceFake): RecipesLocalDataSourceImpl = fake
-
-    @Provides
-    @Singleton
-    fun provideRemoteDataSource(fake: RemoteDataSourceFake): RecipesRemoteDataSourceImpl = fake
+    @ApiUrl
+    fun provideBaseUrl(): String = "http://localhost:8080/"
 }

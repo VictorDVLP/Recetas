@@ -18,6 +18,7 @@ hiltNavigationCompose = "1.2.0"
 mockitoKotlin = "5.3.1"
 turbine = "1.0.0"
 test = "1.6.1"
+mockWebServer = "4.11.0"
 
 
 
@@ -61,6 +62,7 @@ turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine
 androidx-test-core = { group = "androidx.test", name = "core-ktx", version.ref = "test" }
 androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "test" }
 
+mockWebServer = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockWebServer" }
 
 
 [plugins]

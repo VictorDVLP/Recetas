@@ -2,14 +2,13 @@ package com.architectureclean.recipes.framework.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 
-const val URL = "https://www.themealdb.com/api/json/v1/1/"
+class RecipesApi @Inject constructor(baseUrl: String) {
 
-internal object RecipesApi {
-
-    val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(URL)
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
