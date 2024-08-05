@@ -1,4 +1,4 @@
-package com.architectureclean.recipes.di
+package com.architectureclean.recipes.screens
 
 import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
