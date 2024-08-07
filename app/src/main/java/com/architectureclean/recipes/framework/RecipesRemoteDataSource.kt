@@ -6,8 +6,8 @@ import com.kqm.architectureclean.domain.Recipe
 import javax.inject.Inject
 
 class RecipesRemoteDataSource @Inject constructor(private val recipesApi: RecipesApi) : RecipesRemoteDataSourceImpl {
-    override suspend fun getRecipe(): List<Recipe> {
+    override suspend fun getRecipe(): Recipe {
         val result = recipesApi.retrofitService.getRecipes()
-        return result.meals.first().toRecipe()
+        return result.meals[0].toRecipe()
     }
 }

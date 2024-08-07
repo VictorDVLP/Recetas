@@ -6,8 +6,8 @@ import com.kqm.architectureclean.test.unit.helpers.generateRecipes
 
 class RemoteDataSourceFake: RecipesRemoteDataSourceImpl {
 
-    override suspend fun getRecipe(): List<Recipe> {
+    override suspend fun getRecipe(): Recipe {
 
-        return generateRecipes(5)
+        return generateRecipes(5)[4]
     }
 }

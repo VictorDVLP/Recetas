@@ -3,5 +3,5 @@ package com.kqm.architectureclean.data
 import com.kqm.architectureclean.domain.Recipe
 
 interface RecipesRemoteDataSourceImpl {
-    suspend fun getRecipe(): List<Recipe>
+    suspend fun getRecipe(): Recipe
 }

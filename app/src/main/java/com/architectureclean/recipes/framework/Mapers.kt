@@ -123,7 +123,7 @@ fun LocalRecipes.toRecipe2(): Recipe {
     )
 }
 
-fun Meal.toRecipe(): List<Recipe> {
+fun Meal.toRecipe(): Recipe {
 
     val preListIngredients: List<String?> = listOf(
         strIngredient1,
@@ -178,8 +178,7 @@ fun Meal.toRecipe(): List<Recipe> {
 
     val listMeasure: List<String> = preListMeasure.filterNot { it.isNullOrEmpty() }.filterNotNull()
 
-    return listOf(
-        Recipe(
+    return Recipe(
             id = idMeal,
             name = strMeal,
             category = strCategory,
@@ -191,5 +190,4 @@ fun Meal.toRecipe(): List<Recipe> {
             measures = listMeasure,
             favorite = false
         )
-    )
 }
