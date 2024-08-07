@@ -6,14 +6,12 @@ import com.architectureclean.testRules.CoroutinesTestRule
 import com.kqm.architectureclean.domain.Recipe
 import com.kqm.architectureclean.test.unit.helpers.generateRecipes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
-class IntegrationTestViewModel {
+class IntegrationTestViewModelFakes {
 
     @get:Rule
     val coroutinesTestRule = CoroutinesTestRule()

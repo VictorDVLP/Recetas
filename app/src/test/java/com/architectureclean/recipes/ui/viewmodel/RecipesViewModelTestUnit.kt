@@ -2,7 +2,7 @@ package com.architectureclean.recipes.ui.viewmodel
 
 import app.cash.turbine.test
 import com.architectureclean.recipes.ResultCall
-import com.architectureclean.testRules.CoroutinesTestRule
+import com.architectureclean.recipes.rule.CoroutinesTestRule
 import com.kqm.architectureclean.test.unit.helpers.generateRecipes
 import com.kqm.architectureclean.usecases.AddRecipeUseCase
 import com.kqm.architectureclean.usecases.DeleteRecipeUseCase
@@ -26,10 +26,10 @@ import java.io.IOException
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
-class RecipesViewModelTest {
+class RecipesViewModelTestUnit {
 
     @get:Rule
-    val coroutinesTestRule = CoroutinesTestRule()
+    val coroutinesTestRule = com.architectureclean.recipes.rule.CoroutinesTestRule()
 
 
     @Mock
