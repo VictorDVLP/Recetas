@@ -100,6 +100,7 @@ dependencies {
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.rules)
     androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.turbine)
     androidTestImplementation(libs.mockWebServer)
     kspAndroidTest(libs.hilt.compiler)
 
