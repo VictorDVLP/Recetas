@@ -1,4 +1,4 @@
-package com.architectureclean.recipes.viewmodel
+package com.architectureclean.recipes.ui.viewmodel
 
 import app.cash.turbine.test
 import com.architectureclean.recipes.ResultCall

@@ -1,4 +1,4 @@
-package com.architectureclean.recipes.screens
+package com.architectureclean.recipes.ui.screens
 
 import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -43,7 +43,7 @@ class RecipesScreenTest {
         }
 
         onNodeWithText("Recipe 3").performClick()
-        assertEquals("recipe_3", idRecipe)
+        assertEquals("3", idRecipe)
     }
 
 
@@ -72,7 +72,7 @@ class RecipesScreenTest {
 
 
     @Test
-    fun whenPulseButtonIsClicked_shouldLoadingIndicator(): Unit = with(composeTestRule) {
+    fun whenPulseButtonRetryIsClicked_shouldLoadingIndicator(): Unit = with(composeTestRule) {
         val state = ResultCall.Error(IOException("Network error"))
 
         setContent {

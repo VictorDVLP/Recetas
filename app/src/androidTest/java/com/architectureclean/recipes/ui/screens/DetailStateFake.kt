@@ -1,4 +1,4 @@
-package com.architectureclean.recipes.screens
+package com.architectureclean.recipes.ui.screens
 
 import com.architectureclean.recipes.ui.screens.detail.DetailStateImpl
 import com.kqm.architectureclean.domain.Recipe
