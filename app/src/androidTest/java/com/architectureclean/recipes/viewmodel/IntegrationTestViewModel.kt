@@ -4,7 +4,6 @@ import app.cash.turbine.test
 import com.architectureclean.recipes.ResultCall
 import com.architectureclean.recipes.framework.RecipesLocalDataSource
 import com.architectureclean.recipes.rule.MockWebServerRule
-import com.architectureclean.recipes.rule.fromJson
 import com.architectureclean.recipes.ui.viewmodel.RecipesViewModel
 import com.kqm.architectureclean.domain.Recipe
 import com.kqm.architectureclean.test.unit.helpers.generateRecipes
@@ -14,19 +13,12 @@ import com.kqm.architectureclean.usecases.GetAllRecipesUseCase
 import com.kqm.architectureclean.usecases.UpdateFavoriteUseCase
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withTimeout
-import okhttp3.mockwebserver.MockResponse
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
-import kotlin.time.Duration
 
 @HiltAndroidTest
 class IntegrationTestViewModel {

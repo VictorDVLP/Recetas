@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.cfg.pseudocode.and
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
