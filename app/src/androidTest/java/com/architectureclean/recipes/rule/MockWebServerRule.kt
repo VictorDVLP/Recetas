@@ -11,6 +11,7 @@ class MockWebServerRule: TestWatcher() {
     override fun starting(description: Description?) {
         server = MockWebServer()
         server.start(8080)
+        server.dispatcher = MockDispatcher()
     }
 
     override fun finished(description: Description?) {
