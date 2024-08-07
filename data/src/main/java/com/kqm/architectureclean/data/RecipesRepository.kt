@@ -24,7 +24,7 @@ class RecipesRepository @Inject constructor(
     }
 
     suspend fun updateFavorite(recipe: Recipe) {
-        recipesLocalDataSource.insertRecipe(listOf(recipe.copy(favorite = !recipe.favorite)))
+        recipesLocalDataSource.insertRecipe(recipe.copy(favorite = !recipe.favorite))
     }
 
     suspend fun deleteRecipe(recipe: Recipe) {

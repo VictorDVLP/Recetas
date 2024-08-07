@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
-internal class RecipesLocalDataSource @Inject constructor(private val recipesDao: RecipesDao) : RecipesLocalDataSourceImpl {
+class RecipesLocalDataSource @Inject constructor(private val recipesDao: RecipesDao) : RecipesLocalDataSourceImpl {
 
     override val localRecipes: Flow<List<Recipe>> = recipesDao.getLocalRecipes().map { it.map { entity -> entity.toRecipe2() } }
 
-    override suspend fun insertRecipe(recipe: List<Recipe>) {
-        recipesDao.insertRecipe(recipe[0].toEntity())
+    override suspend fun insertRecipe(recipe: Recipe) {
+        recipesDao.insertRecipe(recipe.toEntity())
     }
 
     override suspend fun deleteRecipe(recipe: Recipe) {

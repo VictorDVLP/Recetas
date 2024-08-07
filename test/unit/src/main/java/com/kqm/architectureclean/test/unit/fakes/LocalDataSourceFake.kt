@@ -11,12 +11,9 @@ class LocalDataSourceFake : RecipesLocalDataSourceImpl {
 
     override val localRecipes: Flow<List<Recipe>> = inMemoryTest
 
-    override suspend fun insertRecipe(recipe: List<Recipe>) {
+    override suspend fun insertRecipe(recipe: Recipe) {
         inMemoryTest.value = inMemoryTest.value.toMutableList().apply {
-            recipe.forEach { newRecipe ->
-                removeAll { it.id == newRecipe.id }
-                add(newRecipe)
-            }
+            if (none { it.id == recipe.id }) add(recipe)
         }
     }
 

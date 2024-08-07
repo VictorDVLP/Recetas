@@ -50,7 +50,7 @@ class RecipesRepositoryTest {
         runBlocking {
             val listEmpty = emptyList<Recipe>()
             whenever(localDataSource.localRecipes).thenReturn(flowOf(listEmpty))
-            whenever(remoteDataSource.getRecipe()).thenReturn(testRecipes)
+            whenever(remoteDataSource.getRecipe()).thenReturn(testRecipes[0])
 
             recipesRepository.recipes.first()
 
@@ -62,14 +62,14 @@ class RecipesRepositoryTest {
         runBlocking {
             val newRecipe = generateRecipes(6)[5]
 
-            whenever(remoteDataSource.getRecipe()).thenReturn(listOf())
+            whenever(remoteDataSource.getRecipe()).thenReturn(newRecipe)
             whenever(localDataSource.localRecipes).thenReturn(flowOf(testRecipes + newRecipe))
 
             recipesRepository.addRecipe()
             val result = recipesRepository.recipes.first()
 
             verify(remoteDataSource).getRecipe()
-            verify(localDataSource).insertRecipe(listOf())
+            verify(localDataSource).insertRecipe(newRecipe)
 
             val expected = testRecipes + newRecipe
             assertEquals(expected, result)
@@ -96,7 +96,7 @@ class RecipesRepositoryTest {
 
             recipesRepository.updateFavorite(testRecipes[0])
 
-            verify(localDataSource).insertRecipe(newsRecipe)
+            verify(localDataSource).insertRecipe(newsRecipe[0])
             val result = recipesRepository.recipes.first()[0].favorite
 
             assertTrue(result)
