@@ -5,7 +5,6 @@ import com.kqm.architectureclean.presentation.ResultCall
 import com.architectureclean.testRules.CoroutinesTestRule
 import com.kqm.architectureclean.domain.Recipe
 import com.kqm.architectureclean.test.unit.helpers.generateRecipes
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule

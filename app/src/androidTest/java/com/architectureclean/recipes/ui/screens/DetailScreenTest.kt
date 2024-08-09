@@ -19,7 +19,7 @@ class DetailScreenTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    private lateinit var detailState: com.kqm.architectureclean.presentation.ui.screens.detail.DetailStateImpl
+    private lateinit var detailState: DetailStateImpl
 
     @Before
     fun setUp() {
@@ -31,7 +31,7 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+            DetailScreen(
                 recipe = recipeTest,
                 detailState = detailState,
                 onDeleteClick = {},
@@ -49,7 +49,7 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+            DetailScreen(
                 recipe = recipeTest,
                 detailState = detailState,
                 onDeleteClick = {},
@@ -72,7 +72,7 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+            DetailScreen(
                 recipe = recipeTest,
                 detailState = detailState,
                 onDeleteClick = {
@@ -95,7 +95,7 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+            DetailScreen(
                 recipe = recipeTest,
                 detailState = detailState,
                 onDeleteClick = {},
@@ -118,7 +118,7 @@ class DetailScreenTest {
         val detailState = DetailStateFake()
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+            DetailScreen(
                 recipe = recipeTest,
                 detailState = detailState,
                 onDeleteClick = {},

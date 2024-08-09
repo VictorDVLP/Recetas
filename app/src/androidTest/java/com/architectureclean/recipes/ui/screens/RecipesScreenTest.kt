@@ -22,10 +22,10 @@ class RecipesScreenTest {
 
     @Test
     fun whenStateIsSuccess_shouldShowRecipes(): Unit = with(composeTestRule) {
-        val state = com.kqm.architectureclean.presentation.ResultCall.Success(generateRecipes(5))
+        val state = ResultCall.Success(generateRecipes(5))
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.recipes.RecipesScreen(
+            RecipesScreen(
                 state = state,
                 addRecipe = {},
                 onNavigateDetail = {},
@@ -38,10 +38,10 @@ class RecipesScreenTest {
     @Test
     fun whenClickOnRecipe_isCalledNavigateDetail(): Unit = with(composeTestRule) {
         var idRecipe = ""
-        val state = com.kqm.architectureclean.presentation.ResultCall.Success(generateRecipes(5))
+        val state = ResultCall.Success(generateRecipes(5))
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.recipes.RecipesScreen(
+            RecipesScreen(
                 state = state,
                 addRecipe = {},
                 onNavigateDetail = {
@@ -60,23 +60,23 @@ class RecipesScreenTest {
         val state = com.kqm.architectureclean.presentation.ResultCall.Loading
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.recipes.RecipesScreen(
+            RecipesScreen(
                 state = state,
                 addRecipe = {},
                 onNavigateDetail = {},
                 onBackNavigate = {})
         }
 
-        onNodeWithTag(com.kqm.architectureclean.presentation.ui.screens.recipes.resultComposables.LOADING_INDICATOR_TEST_TAG).isDisplayed()
+        onNodeWithTag(LOADING_INDICATOR_TEST_TAG).isDisplayed()
 
     }
 
     @Test
     fun whenStateIsError_showMessageError(): Unit = with(composeTestRule) {
-        val state = com.kqm.architectureclean.presentation.ResultCall.Error(IOException("Network error"))
+        val state = ResultCall.Error(IOException("Network error"))
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.recipes.RecipesScreen(
+            RecipesScreen(
                 state = state,
                 addRecipe = {},
                 onNavigateDetail = {},
@@ -89,17 +89,17 @@ class RecipesScreenTest {
 
     @Test
     fun whenPulseButtonRetryIsClicked_shouldLoadingIndicator(): Unit = with(composeTestRule) {
-        val state = com.kqm.architectureclean.presentation.ResultCall.Error(IOException("Network error"))
+        val state = ResultCall.Error(IOException("Network error"))
 
         setContent {
-            com.kqm.architectureclean.presentation.ui.screens.recipes.RecipesScreen(
+            RecipesScreen(
                 state = state,
                 addRecipe = {},
                 onNavigateDetail = {},
                 onBackNavigate = {})
         }
 
-        onNodeWithTag(com.kqm.architectureclean.presentation.ui.screens.recipes.resultComposables.BUTTON_RETRY_TEST_TAG).performClick()
-        onNodeWithTag(com.kqm.architectureclean.presentation.ui.screens.recipes.resultComposables.LOADING_INDICATOR_TEST_TAG).isDisplayed()
+        onNodeWithTag(BUTTON_RETRY_TEST_TAG).performClick()
+        onNodeWithTag(LOADING_INDICATOR_TEST_TAG).isDisplayed()
     }
 }
