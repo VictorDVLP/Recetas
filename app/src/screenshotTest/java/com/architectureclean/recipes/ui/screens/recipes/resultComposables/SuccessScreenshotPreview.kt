@@ -3,7 +3,6 @@ package com.architectureclean.recipes.ui.screens.recipes.resultComposables
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.architectureclean.recipes.ResultCall
 import com.kqm.architectureclean.domain.Recipe
 
 class SuccessScreenshotPreview {
@@ -46,7 +45,10 @@ class SuccessScreenshotPreview {
             favorite = false
         )
         )
-        val state = ResultCall.Success(recipe)
-        SuccessScreen(PaddingValues(), state) {}
+        val state = com.kqm.architectureclean.presentation.ResultCall.Success(recipe)
+        com.kqm.architectureclean.presentation.ui.screens.recipes.resultComposables.SuccessScreen(
+            PaddingValues(),
+            state
+        ) {}
     }
 }

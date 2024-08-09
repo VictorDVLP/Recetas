@@ -2,7 +2,7 @@ package com.architectureclean.recipes.ui.screens.recipes.resultComposables
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.architectureclean.recipes.ResultCall
+import com.kqm.architectureclean.presentation.ResultCall
 
 
 class ErrorScreenshotPreview {
@@ -10,8 +10,10 @@ class ErrorScreenshotPreview {
     @Preview(showBackground = true)
     @Composable
     fun ErrorScreenPreview() {
-        val state = ResultCall.Error(Exception("Network Error"))
+        val state = com.kqm.architectureclean.presentation.ResultCall.Error(Exception("Network Error"))
 
-        ErrorScreen(state = state, onBack = {})
+        com.kqm.architectureclean.presentation.ui.screens.recipes.resultComposables.ErrorScreen(
+            state = state,
+            onBack = {})
     }
 }

@@ -20,6 +20,8 @@ turbine = "1.0.0"
 test = "1.6.1"
 mockWebServer = "4.11.0"
 screenshot = "0.0.1-alpha03"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 
 
@@ -64,6 +66,8 @@ androidx-test-core = { group = "androidx.test", name = "core-ktx", version.ref =
 androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "test" }
 
 mockWebServer = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockWebServer" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 
 [plugins]
@@ -75,4 +79,5 @@ ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.21" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 screenshot = { id = "com.android.compose.screenshot", version.ref = "screenshot" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 

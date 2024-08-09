@@ -8,6 +8,6 @@ class LoadingScreenshotPreview {
     @Preview
     @Composable
     fun LoadingIndicatorPreview() {
-        LoadingIndicator()
+        com.kqm.architectureclean.presentation.ui.screens.recipes.resultComposables.LoadingIndicator()
     }
 }

@@ -1,8 +1,9 @@
 package com.architectureclean.recipes.ui.viewmodel
 
 import app.cash.turbine.test
-import com.architectureclean.recipes.ResultCall
+import com.kqm.architectureclean.presentation.ResultCall
 import com.architectureclean.testRules.CoroutinesTestRule
+import com.kqm.architectureclean.presentation.ui.viewmodel.RecipesViewModel
 import com.kqm.architectureclean.test.unit.helpers.generateRecipes
 import com.kqm.architectureclean.usecases.AddRecipeUseCase
 import com.kqm.architectureclean.usecases.DeleteRecipeUseCase

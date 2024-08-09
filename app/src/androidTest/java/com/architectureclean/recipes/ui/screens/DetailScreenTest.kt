@@ -5,8 +5,8 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.architectureclean.recipes.ui.screens.detail.DetailScreen
-import com.architectureclean.recipes.ui.screens.detail.DetailStateImpl
+import com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen
+import com.kqm.architectureclean.presentation.ui.screens.detail.DetailStateImpl
 import com.kqm.architectureclean.test.unit.helpers.generateRecipes
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -19,7 +19,7 @@ class DetailScreenTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    private lateinit var detailState: DetailStateImpl
+    private lateinit var detailState: com.kqm.architectureclean.presentation.ui.screens.detail.DetailStateImpl
 
     @Before
     fun setUp() {
@@ -31,7 +31,12 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            DetailScreen( recipe = recipeTest, detailState = detailState, onDeleteClick = {}, onFavoriteClick = {}, onBack = {})
+            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+                recipe = recipeTest,
+                detailState = detailState,
+                onDeleteClick = {},
+                onFavoriteClick = {},
+                onBack = {})
         }
 
         onNodeWithText(recipeTest.name).assertIsDisplayed()
@@ -44,9 +49,14 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            DetailScreen( recipe = recipeTest, detailState = detailState, onDeleteClick = {}, onFavoriteClick = {
-                isFavorite = !isFavorite
-            }, onBack = {})
+            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+                recipe = recipeTest,
+                detailState = detailState,
+                onDeleteClick = {},
+                onFavoriteClick = {
+                    isFavorite = !isFavorite
+                },
+                onBack = {})
         }
 
         onNodeWithText(recipeTest.name).assertIsDisplayed()
@@ -62,9 +72,14 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            DetailScreen( recipe = recipeTest, detailState = detailState, onDeleteClick = {
-                isDelete = true
-            }, onFavoriteClick = {}, onBack = {})
+            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+                recipe = recipeTest,
+                detailState = detailState,
+                onDeleteClick = {
+                    isDelete = true
+                },
+                onFavoriteClick = {},
+                onBack = {})
         }
 
         onNodeWithText(recipeTest.name).assertIsDisplayed()
@@ -80,9 +95,14 @@ class DetailScreenTest {
         val recipeTest = generateRecipes(1)[0]
 
         setContent {
-            DetailScreen( recipe = recipeTest, detailState = detailState, onDeleteClick = {}, onFavoriteClick = {}, onBack = {
-                isBack = true
-            })
+            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+                recipe = recipeTest,
+                detailState = detailState,
+                onDeleteClick = {},
+                onFavoriteClick = {},
+                onBack = {
+                    isBack = true
+                })
         }
 
         onNodeWithText(recipeTest.name).assertIsDisplayed()
@@ -98,7 +118,12 @@ class DetailScreenTest {
         val detailState = DetailStateFake()
 
         setContent {
-            DetailScreen( recipe = recipeTest, detailState = detailState, onDeleteClick = {}, onFavoriteClick = {}, onBack = {} )
+            com.kqm.architectureclean.presentation.ui.screens.detail.DetailScreen(
+                recipe = recipeTest,
+                detailState = detailState,
+                onDeleteClick = {},
+                onFavoriteClick = {},
+                onBack = {})
         }
 
         onNodeWithContentDescription("Share").assertIsDisplayed()

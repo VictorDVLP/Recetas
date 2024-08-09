@@ -1,7 +1,7 @@
 package com.architectureclean.recipes.ui.viewmodel
 
 import app.cash.turbine.test
-import com.architectureclean.recipes.ResultCall
+import com.kqm.architectureclean.presentation.ResultCall
 import com.architectureclean.testRules.CoroutinesTestRule
 import com.kqm.architectureclean.domain.Recipe
 import com.kqm.architectureclean.test.unit.helpers.generateRecipes
@@ -72,8 +72,6 @@ class IntegrationTestViewModelFakes {
             }
         }
 
-
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `when update recipe favorite is called, update favorite in local data source`(): Unit =
         runTest {

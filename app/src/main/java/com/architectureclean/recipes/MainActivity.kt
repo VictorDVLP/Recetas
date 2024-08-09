@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.architectureclean.recipes.ui.navigation.NavigationRecipes
-import com.architectureclean.recipes.ui.theme.RecipesTheme
+import com.kqm.architectureclean.presentation.ui.navigation.NavigationRecipes
+import com.kqm.architectureclean.presentation.ui.theme.RecipesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 

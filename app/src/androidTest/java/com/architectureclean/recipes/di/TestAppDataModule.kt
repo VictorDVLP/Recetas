@@ -2,9 +2,9 @@ package com.architectureclean.recipes.di
 
 import android.app.Application
 import androidx.room.Room
-import com.architectureclean.recipes.framework.di.ApiUrl
-import com.architectureclean.recipes.framework.di.FrameworkExtraModule
-import com.architectureclean.recipes.framework.local.database.RoomRecipesDatabase
+import com.kqm.architectureclean.framework.di.ApiUrl
+import com.kqm.architectureclean.framework.di.FrameworkExtraModule
+import com.kqm.architectureclean.framework.framework.local.database.RoomRecipesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
