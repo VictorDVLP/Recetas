@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         google {
@@ -21,4 +23,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "Recetas"
 include(":app")
- 
+include(":data")
+include(":domain")
+include(":usecases")
+include(":framework")
+include(":presentation")
+include(":test:unit")
+
+
