@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -28,18 +28,21 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
+import com.kqm.architectureclean.domain.IngredientMeasure
+import com.kqm.architectureclean.domain.Recipe
+import com.kqm.architectureclean.presentation.ResultCall
 import com.kqm.architectureclean.presentation.ui.common.FloatingButton
 import com.kqm.architectureclean.presentation.ui.common.TopBarApp
 import com.kqm.architectureclean.presentation.ui.viewmodel.RecipesViewModel
-import com.kqm.architectureclean.domain.Recipe
-import com.kqm.architectureclean.presentation.ResultCall
 
 @Composable
 fun DetailScreen(id: String, viewModel: RecipesViewModel = hiltViewModel(), onBack: () -> Unit) {
@@ -135,8 +138,7 @@ fun DetailScreen(
                             .fillMaxWidth()
                             .padding(horizontal = 8.dp, vertical = 16.dp)
                     ) {
-                        ListsRecipe(it.ingredients, "Ingredients:")
-                        ListsRecipe(it.measures, "Measures:")
+                        ListsRecipe(it.ingredientMeasures)
                     }
                     Box {
                         Instructions(it.instructions)
@@ -169,11 +171,14 @@ fun Instructions(instructions: String) {
 }
 
 @Composable
-private fun ListsRecipe(list: List<String>, title: String) {
-    Column {
+private fun ListsRecipe(list: List<IngredientMeasure>) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(
-            text = title,
-            fontSize = 22.sp,
+            text = "Ingredients & Measures",
+            fontSize = 26.sp,
             style = MaterialTheme.typography.titleMedium
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -181,27 +186,42 @@ private fun ListsRecipe(list: List<String>, title: String) {
             shape = MaterialTheme.shapes.small,
             border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
             modifier = Modifier
-                .height(100.dp)
+                .height(200.dp)
                 .padding(start = 1.dp, end = 1.dp)
         ) {
             LazyColumn(
                 modifier = Modifier
-                    .widthIn(min = 200.dp)
+                    .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.inversePrimary),
             ) {
                 items(list) { item ->
-                    Text(
-                        text = if (item.isEmpty()) "" else "· $item",
-                        fontSize = 16.sp,
-                        modifier = Modifier
-                            .height(38.dp)
-                            .padding(horizontal = 6.dp, vertical = 2.dp),
-                        style = MaterialTheme.typography.bodySmall,
-                        maxLines = 2,
-                        overflow = TextOverflow.Visible
-                    )
+                    ItemText(item = item)
                 }
             }
         }
+    }
+}
+
+@Composable
+fun ItemText(item: IngredientMeasure) {
+    Row(
+        modifier = Modifier.padding(8.dp)
+    ) {
+            Text(
+                text = item.ingredient.name,
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
+            )
+        Spacer(modifier = Modifier.width(18.dp))
+            Text(
+                text = item.measure,
+                style = MaterialTheme.typography.bodySmall,
+                color = Color.Gray,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                overflow = TextOverflow.Ellipsis
+            )
+
     }
 }

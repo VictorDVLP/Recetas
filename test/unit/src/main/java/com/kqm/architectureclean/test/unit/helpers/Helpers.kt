@@ -1,5 +1,7 @@
 package com.kqm.architectureclean.test.unit.helpers
 
+import com.kqm.architectureclean.domain.Ingredient
+import com.kqm.architectureclean.domain.IngredientMeasure
 import com.kqm.architectureclean.domain.Recipe
 
 fun generateRecipes(count: Int): List<Recipe> {
@@ -15,8 +17,7 @@ private fun generateRecipe(id: Int): Recipe {
         area = "Area $id",
         category = "Category $id",
         instructions = "Instructions for recipe $id",
-        ingredients = listOf("Ingredient ${id}_1", "Ingredient ${id}_2"),
-        measures = listOf("Measure ${id}_1", "Measure ${id}_2"),
+        ingredientMeasures = listOf(IngredientMeasure(Ingredient("id_${id}_1"), "42g"), IngredientMeasure(Ingredient("id_${id}_2"), "1/2 cup")),
         favorite = false
     )
 }

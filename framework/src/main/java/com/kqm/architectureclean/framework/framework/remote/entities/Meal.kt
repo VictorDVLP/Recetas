@@ -1,6 +1,5 @@
 package com.kqm.architectureclean.framework.framework.remote.entities
 
-
 data class Meal(
     val dateModified: Any,
     val idMeal: String,

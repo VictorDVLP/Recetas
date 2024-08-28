@@ -8,7 +8,10 @@ data class Recipe(
     val area: String,
     val category: String,
     val instructions: String,
-    val ingredients: List<String>,
-    val measures: List<String>,
+    val ingredientMeasures: List<IngredientMeasure>,
     var favorite: Boolean
 )
+
+data class Ingredient(val name: String)
+
+data class IngredientMeasure(val ingredient: Ingredient, val measure: String)

@@ -35,10 +35,10 @@ Zona: ${recipe.area}
 Categoría: ${recipe.category}
 
 Ingredientes:
-${recipe.ingredients.joinToString("\n") { it }}
+${recipe.ingredientMeasures.joinToString("\n") { it.ingredient.name }}
 
 Medidas:
-${recipe.measures.joinToString("\n") { it }}
+${recipe.ingredientMeasures.joinToString("\n") { it.measure }}
 
 Instrucciones:
 ${recipe.instructions}
